@@ -1,0 +1,24 @@
+ion-virtual-scroll {
+  display: block;
+  position: relative;
+  width: 100%;
+  contain: strict;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.virtual-loading {
+  opacity: 0;
+}
+
+.virtual-item {
+  left: 0;
+  right: 0;
+  top: 0;
+  position: absolute;
+  -webkit-transition-duration: 0ms;
+  transition-duration: 0ms;
+  will-change: transform;
+}

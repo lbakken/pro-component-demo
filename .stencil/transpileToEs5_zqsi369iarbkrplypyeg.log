@@ -1,0 +1,55 @@
+System.register(['./chunk-5603b3cb.system.js'], function (exports) {
+    'use strict';
+    var registerInstance, createEvent, h, Host;
+    return {
+        setters: [function (module) {
+                registerInstance = module.r;
+                createEvent = module.d;
+                h = module.h;
+                Host = module.H;
+            }],
+        execute: function () {
+            var ProInput = /** @class */ (function () {
+                function ProInput(hostRef) {
+                    registerInstance(this, hostRef);
+                    this.regex = /^(.+)$/;
+                    this.required = false;
+                    this.inputChange = createEvent(this, "inputChange", 7);
+                }
+                ProInput.prototype.componentWillLoad = function () {
+                    if (this.required) {
+                        this.reqLabel = 'required';
+                    }
+                };
+                ProInput.prototype.onInputChange = function (ev) {
+                    var value = ev.target.value;
+                    var validated = false;
+                    if (value != '') {
+                        (this.required) ? validated = this.regex.test(value) : validated = true;
+                        validated ? this.class = 'valid' : this.class = 'invalid';
+                    }
+                    else {
+                        validated = !this.required;
+                        validated ? this.class = '' : this.class = 'invalid';
+                    }
+                    this.inputChange.emit({
+                        name: this.label,
+                        value: value,
+                        valid: validated
+                    });
+                };
+                ProInput.prototype.render = function () {
+                    var _this = this;
+                    return (h(Host, null, h("label", { htmlFor: this.label, class: this.reqLabel }, this.label), h("input", { onChange: function (ev) { return _this.onInputChange(ev); }, name: this.label, placeholder: this.placeholder, id: this.label, class: this.class })));
+                };
+                Object.defineProperty(ProInput, "style", {
+                    get: function () { return "STYLE_TEXT_PLACEHOLDER:pro-input"; },
+                    enumerable: true,
+                    configurable: true
+                });
+                return ProInput;
+            }());
+            exports('pro_input', ProInput);
+        }
+    };
+});

@@ -1,0 +1,42 @@
+import { createEvent as __stencil_createEvent } from "@stencil/core";
+import { getConnect as __stencil_getConnect } from "@stencil/core";
+import { getContext as __stencil_getContext } from "@stencil/core";
+import { getElement as __stencil_getElement } from "@stencil/core";
+import { Host as __stencil_Host } from "@stencil/core";
+import { h as __stencil_h } from "@stencil/core";
+import { registerInstance as __stencil_registerInstance } from "@stencil/core";
+import { h, Host } from '@stencil/core';
+export class ProInput {
+    constructor(hostRef) {
+        __stencil_registerInstance(this, hostRef);
+        this.regex = /^(.+)$/;
+        this.required = false;
+        this.inputChange = __stencil_createEvent(this, "inputChange", 7);
+    }
+    componentWillLoad() {
+        if (this.required) {
+            this.reqLabel = 'required';
+        }
+    }
+    onInputChange(ev) {
+        const value = ev.target.value;
+        let validated = false;
+        if (value != '') {
+            (this.required) ? validated = this.regex.test(value) : validated = true;
+            validated ? this.class = 'valid' : this.class = 'invalid';
+        }
+        else {
+            validated = !this.required;
+            validated ? this.class = '' : this.class = 'invalid';
+        }
+        this.inputChange.emit({
+            name: this.label,
+            value: value,
+            valid: validated
+        });
+    }
+    render() {
+        return (h(Host, null, h("label", { htmlFor: this.label, class: this.reqLabel }, this.label), h("input", { onChange: (ev) => this.onInputChange(ev), name: this.label, placeholder: this.placeholder, id: this.label, class: this.class })));
+    }
+    static get style() { return "STYLE_TEXT_PLACEHOLDER:pro-input"; }
+}

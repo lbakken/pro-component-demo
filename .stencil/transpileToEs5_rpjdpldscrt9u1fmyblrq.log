@@ -1,0 +1,80 @@
+System.register(['./chunk-5603b3cb.system.js', './chunk-17730780.system.js'], function (exports) {
+    'use strict';
+    var registerInstance, getIonMode, h, Host, createColorClasses, openURL;
+    return {
+        setters: [function (module) {
+                registerInstance = module.r;
+                getIonMode = module.f;
+                h = module.h;
+                Host = module.H;
+            }, function (module) {
+                createColorClasses = module.c;
+                openURL = module.o;
+            }],
+        execute: function () {
+            /**
+             * @virtualProp {"ios" | "md"} mode - The mode determines which platform styles to use.
+             */
+            var Card = /** @class */ (function () {
+                function Card(hostRef) {
+                    registerInstance(this, hostRef);
+                    /**
+                     * If `true`, a button tag will be rendered and the card will be tappable.
+                     */
+                    this.button = false;
+                    /**
+                     * The type of the button. Only used when an `onclick` or `button` property is present.
+                     */
+                    this.type = 'button';
+                    /**
+                     * If `true`, the user cannot interact with the card.
+                     */
+                    this.disabled = false;
+                    /**
+                     * When using a router, it specifies the transition direction when navigating to
+                     * another page using `href`.
+                     */
+                    this.routerDirection = 'forward';
+                }
+                Card.prototype.isClickable = function () {
+                    return (this.href !== undefined || this.button);
+                };
+                Card.prototype.hostData = function () {
+                    var _a;
+                    var mode = getIonMode(this);
+                    return {
+                        class: Object.assign((_a = {}, _a[mode] = true, _a), createColorClasses(this.color), { 'card-disabled': this.disabled, 'ion-activatable': this.isClickable() })
+                    };
+                };
+                Card.prototype.__stencil_render = function () {
+                    var clickable = this.isClickable();
+                    if (!clickable) {
+                        return [
+                            h("slot", null)
+                        ];
+                    }
+                    var mode = getIonMode(this);
+                    var _a = this, href = _a.href, routerDirection = _a.routerDirection;
+                    var TagType = clickable ? (href === undefined ? 'button' : 'a') : 'div';
+                    var attrs = (TagType === 'button')
+                        ? { type: this.type }
+                        : {
+                            download: this.download,
+                            href: this.href,
+                            rel: this.rel,
+                            target: this.target
+                        };
+                    return (h(TagType, Object.assign({}, attrs, { class: "card-native", disabled: this.disabled, onClick: function (ev) { return openURL(href, ev, routerDirection); } }), h("slot", null), clickable && mode === 'md' && h("ion-ripple-effect", null)));
+                };
+                Card.prototype.render = function () { return h(Host, this.hostData(), this.__stencil_render()); };
+                Object.defineProperty(Card, "style", {
+                    get: function () { return "STYLE_TEXT_PLACEHOLDER:ion-card"; },
+                    enumerable: true,
+                    configurable: true
+                });
+                return Card;
+            }());
+            exports('ion_card', Card);
+        }
+    };
+});

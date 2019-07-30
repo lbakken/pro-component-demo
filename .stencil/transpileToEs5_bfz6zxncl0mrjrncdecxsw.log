@@ -1,0 +1,39 @@
+System.register(['./chunk-5603b3cb.system.js'], function (exports) {
+    'use strict';
+    var registerInstance, getIonMode, h, Host;
+    return {
+        setters: [function (module) {
+                registerInstance = module.r;
+                getIonMode = module.f;
+                h = module.h;
+                Host = module.H;
+            }],
+        execute: function () {
+            var Thumbnail = /** @class */ (function () {
+                function Thumbnail(hostRef) {
+                    registerInstance(this, hostRef);
+                }
+                Thumbnail.prototype.hostData = function () {
+                    var _a;
+                    var mode = getIonMode(this);
+                    return {
+                        class: (_a = {},
+                            _a[mode] = true,
+                            _a)
+                    };
+                };
+                Thumbnail.prototype.__stencil_render = function () {
+                    return h("slot", null);
+                };
+                Thumbnail.prototype.render = function () { return h(Host, this.hostData(), this.__stencil_render()); };
+                Object.defineProperty(Thumbnail, "style", {
+                    get: function () { return "STYLE_TEXT_PLACEHOLDER:ion-thumbnail"; },
+                    enumerable: true,
+                    configurable: true
+                });
+                return Thumbnail;
+            }());
+            exports('ion_thumbnail', Thumbnail);
+        }
+    };
+});

@@ -1,0 +1,40 @@
+import { createEvent as __stencil_createEvent } from "@stencil/core";
+import { getConnect as __stencil_getConnect } from "@stencil/core";
+import { getContext as __stencil_getContext } from "@stencil/core";
+import { getElement as __stencil_getElement } from "@stencil/core";
+import { Host as __stencil_Host } from "@stencil/core";
+import { h as __stencil_h } from "@stencil/core";
+import { registerInstance as __stencil_registerInstance } from "@stencil/core";
+import { createOverlay, dismissOverlay, getOverlay } from '../../utils/overlays';
+export class ModalController {
+    constructor(hostRef) {
+        __stencil_registerInstance(this, hostRef);
+    }
+    /**
+     * Create a modal overlay with modal options.
+     *
+     * @param options The options to use to create the modal.
+     */
+    create(options) {
+        return createOverlay('ion-modal', options);
+    }
+    /**
+     * Dismiss the open modal overlay.
+     *
+     * @param data Any data to emit in the dismiss events.
+     * @param role The role of the element that is dismissing the modal.
+     * This can be useful in a button handler for determining which button was
+     * clicked to dismiss the modal.
+     * Some examples include: ``"cancel"`, `"destructive"`, "selected"`, and `"backdrop"`.
+     * @param id The id of the modal to dismiss. If an id is not provided, it will dismiss the most recently opened modal.
+     */
+    dismiss(data, role, id) {
+        return dismissOverlay(document, data, role, 'ion-modal', id);
+    }
+    /**
+     * Get the most recently opened modal overlay.
+     */
+    async getTop() {
+        return getOverlay(document, 'ion-modal');
+    }
+}

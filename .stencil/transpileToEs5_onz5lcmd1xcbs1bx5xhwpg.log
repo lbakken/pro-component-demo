@@ -1,0 +1,86 @@
+System.register(['./chunk-5603b3cb.system.js', './chunk-17730780.system.js'], function (exports) {
+    'use strict';
+    var registerInstance, createEvent, getIonMode, h, getElement, Host, createColorClasses;
+    return {
+        setters: [function (module) {
+                registerInstance = module.r;
+                createEvent = module.d;
+                getIonMode = module.f;
+                h = module.h;
+                getElement = module.c;
+                Host = module.H;
+            }, function (module) {
+                createColorClasses = module.c;
+            }],
+        execute: function () {
+            /**
+             * @virtualProp {"ios" | "md"} mode - The mode determines which platform styles to use.
+             */
+            var TabBar = /** @class */ (function () {
+                function TabBar(hostRef) {
+                    registerInstance(this, hostRef);
+                    this.keyboardVisible = false;
+                    /**
+                     * If `true`, the tab bar will be translucent.
+                     */
+                    this.translucent = false;
+                    this.ionTabBarChanged = createEvent(this, "ionTabBarChanged", 7);
+                }
+                TabBar.prototype.selectedTabChanged = function () {
+                    if (this.selectedTab !== undefined) {
+                        this.ionTabBarChanged.emit({
+                            tab: this.selectedTab
+                        });
+                    }
+                };
+                TabBar.prototype.onKeyboardWillHide = function () {
+                    var _this = this;
+                    setTimeout(function () { return _this.keyboardVisible = false; }, 50);
+                };
+                TabBar.prototype.onKeyboardWillShow = function () {
+                    if (this.el.getAttribute('slot') !== 'top') {
+                        this.keyboardVisible = true;
+                    }
+                };
+                TabBar.prototype.componentWillLoad = function () {
+                    this.selectedTabChanged();
+                };
+                TabBar.prototype.hostData = function () {
+                    var _a;
+                    var _b = this, color = _b.color, translucent = _b.translucent, keyboardVisible = _b.keyboardVisible;
+                    var mode = getIonMode(this);
+                    return {
+                        'role': 'tablist',
+                        'aria-hidden': keyboardVisible ? 'true' : null,
+                        class: Object.assign({}, createColorClasses(color), (_a = {}, _a[mode] = true, _a['tab-bar-translucent'] = translucent, _a['tab-bar-hidden'] = keyboardVisible, _a))
+                    };
+                };
+                TabBar.prototype.__stencil_render = function () {
+                    return (h("slot", null));
+                };
+                Object.defineProperty(TabBar.prototype, "el", {
+                    get: function () { return getElement(this); },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(TabBar, "watchers", {
+                    get: function () {
+                        return {
+                            "selectedTab": ["selectedTabChanged"]
+                        };
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                TabBar.prototype.render = function () { return h(Host, this.hostData(), this.__stencil_render()); };
+                Object.defineProperty(TabBar, "style", {
+                    get: function () { return "STYLE_TEXT_PLACEHOLDER:ion-tab-bar"; },
+                    enumerable: true,
+                    configurable: true
+                });
+                return TabBar;
+            }());
+            exports('ion_tab_bar', TabBar);
+        }
+    };
+});

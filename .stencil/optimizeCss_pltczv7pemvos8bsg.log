@@ -1,0 +1,140 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
+.good-weather {
+  background: #fcd581;
+  background-image: -webkit-gradient(linear, left bottom, left top, from(#fcd581), color-stop(65%, #fdfffc));
+  background-image: linear-gradient(0deg, #fcd581 0%, #fdfffc 65%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100%;
+  color: #0a0908;
+}
+
+.bad-weather {
+  background: #0a0908;
+  background: -webkit-gradient(linear, left bottom, left top, from(#0a0908), color-stop(65%, #263a3c));
+  background: linear-gradient(0deg, #0a0908 0%, #263a3c 65%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100%;
+  color: #fdfffc;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+h2 {
+  font-size: 28px;
+}
+
+h3 {
+  font-size: 26px;
+}
+
+h4 {
+  font-size: 24px;
+}
+
+h5 {
+  font-size: 22px;
+}
+
+h6 {
+  font-size: 18px;
+}
+
+p {
+  font-size: 16px;
+}
+
+.good-weather {
+  background: #fcd581;
+  background-image: -webkit-gradient(linear, left bottom, left top, from(#fcd581), color-stop(65%, #fdfffc));
+  background-image: linear-gradient(0deg, #fcd581 0%, #fdfffc 65%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100%;
+  color: #0a0908;
+}
+
+.bad-weather {
+  background: #0a0908;
+  background: -webkit-gradient(linear, left bottom, left top, from(#0a0908), color-stop(65%, #263a3c));
+  background: linear-gradient(0deg, #0a0908 0%, #263a3c 65%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100%;
+  color: #fdfffc;
+}
+
+html {
+  font-family: "Raleway", "Helvetica", sans-serif;
+  font-size: 100%;
+  background-color: #fdfffc;
+  color: #0a0908;
+  height: 100%;
+  width: 100%;
+}
+
+#body {
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+:host {
+  width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+  pro-modal {
+    width: 50%;
+    height: 50%;
+  }
+}
+input[type=checkbox]:after {
+  width: 15px;
+  height: 15px;
+  border-radius: 2px;
+  top: -2px;
+  left: -1px;
+  position: relative;
+  background-color: gainsboro;
+  content: "";
+  display: inline-block;
+  visibility: visible;
+  border: 2px solid white;
+}
+
+input[type=checkbox]:checked:after {
+  width: 15px;
+  height: 15px;
+  border-radius: 2px;
+  top: -2px;
+  left: -1px;
+  content: "✔";
+  position: relative;
+  display: inline-block;
+  visibility: visible;
+  border: 2px solid white;
+  color: #30bced;
+  text-align: center;
+}
+
+input[type=checkbox]:hover:after {
+  background: #1e96ff;
+  -webkit-transition: 1s;
+  transition: 1s;
+}

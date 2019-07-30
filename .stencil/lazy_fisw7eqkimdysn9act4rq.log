@@ -1,0 +1,40 @@
+import { createEvent as __stencil_createEvent } from "@stencil/core";
+import { getConnect as __stencil_getConnect } from "@stencil/core";
+import { getContext as __stencil_getContext } from "@stencil/core";
+import { getElement as __stencil_getElement } from "@stencil/core";
+import { Host as __stencil_Host } from "@stencil/core";
+import { h as __stencil_h } from "@stencil/core";
+import { registerInstance as __stencil_registerInstance } from "@stencil/core";
+import { h } from '@stencil/core';
+export class AppRoot {
+    constructor(hostRef) {
+        __stencil_registerInstance(this, hostRef);
+    }
+    changeWeatherBackground(event) {
+        let background = document.querySelector('ion-app');
+        switch (event.detail) {
+            case 'none':
+                background.style.backgroundImage = 'linear-gradient(0deg, rgba(252, 213, 129, 1) 0%, rgba(253, 255, 252, 1) 65%)';
+                break;
+            case 'hail':
+                background.style.backgroundImage = 'linear-gradient(0deg, rgba(67, 62, 54, 1) 4%, rgba(210, 220, 221, 1) 39%, rgba(252, 255, 252, 1) 58%)';
+                break;
+            case 'snow':
+                background.style.backgroundImage = 'linear-gradient(0deg, rgba(77, 101, 110, 1) 4%, rgba(210, 220, 221, 1) 39%, rgba(252, 255, 252, 1) 58%)';
+                break;
+            case 'thunderstorms':
+                background.style.backgroundImage = 'linear-gradient(0deg, rgba(38, 58, 60, 1) 4%, rgba(210, 220, 221, 1) 39%, rgba(252, 255, 252, 1) 58%)';
+                break;
+            case 'wind':
+                background.style.backgroundImage = 'linear-gradient(0deg, rgba(66, 86, 62, 1) 4%, rgba(210, 220, 221, 1) 39%, rgba(252, 255, 252, 1) 58%)';
+                break;
+            default:
+                background.style.backgroundImage = 'linear-gradient(0deg, rgba(252, 213, 129, 1) 0%, rgba(253, 255, 252, 1) 65%)';
+                break;
+        }
+    }
+    render() {
+        return (h("ion-app", { id: "background-controller" }, h("ion-router", null, h("ion-route", { url: '/', component: 'app-home' })), h("ion-nav", null)));
+    }
+    static get style() { return "STYLE_TEXT_PLACEHOLDER:app-root"; }
+}

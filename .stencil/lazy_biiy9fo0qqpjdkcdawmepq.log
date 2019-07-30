@@ -1,0 +1,37 @@
+import { createEvent as __stencil_createEvent } from "@stencil/core";
+import { getConnect as __stencil_getConnect } from "@stencil/core";
+import { getContext as __stencil_getContext } from "@stencil/core";
+import { getElement as __stencil_getElement } from "@stencil/core";
+import { Host as __stencil_Host } from "@stencil/core";
+import { h as __stencil_h } from "@stencil/core";
+import { registerInstance as __stencil_registerInstance } from "@stencil/core";
+import { createOverlay, dismissOverlay, getOverlay } from '../../utils/overlays';
+export class ToastController {
+    constructor(hostRef) {
+        __stencil_registerInstance(this, hostRef);
+    }
+    /**
+     * Create a toast overlay with toast options.
+     *
+     * @param options The options to use to create the toast.
+     */
+    create(options) {
+        return createOverlay('ion-toast', options);
+    }
+    /**
+     * Dismiss the open toast overlay.
+     *
+     * @param data Any data to emit in the dismiss events.
+     * @param role The role of the element that is dismissing the toast. For example, 'cancel' or 'backdrop'.
+     * @param id The id of the toast to dismiss. If an id is not provided, it will dismiss the most recently opened toast.
+     */
+    dismiss(data, role, id) {
+        return dismissOverlay(document, data, role, 'ion-toast', id);
+    }
+    /**
+     * Get the most recently opened toast overlay.
+     */
+    async getTop() {
+        return getOverlay(document, 'ion-toast');
+    }
+}

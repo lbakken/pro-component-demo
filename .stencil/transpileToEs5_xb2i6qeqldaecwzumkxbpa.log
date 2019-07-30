@@ -1,0 +1,127 @@
+System.register(['./chunk-5603b3cb.system.js'], function (exports) {
+    'use strict';
+    var registerInstance, createEvent, config, getIonMode, h, Host, getElement;
+    return {
+        setters: [function (module) {
+                registerInstance = module.r;
+                createEvent = module.d;
+                config = module.e;
+                getIonMode = module.f;
+                h = module.h;
+                Host = module.H;
+                getElement = module.c;
+            }],
+        execute: function () {
+            /**
+             * @virtualProp {"ios" | "md"} mode - The mode determines which platform styles to use.
+             */
+            var TabButton = /** @class */ (function () {
+                function TabButton(hostRef) {
+                    var _this = this;
+                    registerInstance(this, hostRef);
+                    /**
+                     * If `true`, the user cannot interact with the tab button.
+                     */
+                    this.disabled = false;
+                    /**
+                     * The selected tab component
+                     */
+                    this.selected = false;
+                    this.onKeyUp = function (ev) {
+                        if (ev.key === 'Enter' || ev.key === ' ') {
+                            _this.selectTab(ev);
+                        }
+                    };
+                    this.onClick = function (ev) {
+                        _this.selectTab(ev);
+                    };
+                    this.ionTabButtonClick = createEvent(this, "ionTabButtonClick", 7);
+                }
+                TabButton.prototype.onTabBarChanged = function (ev) {
+                    this.selected = this.tab === ev.detail.tab;
+                };
+                TabButton.prototype.componentWillLoad = function () {
+                    if (this.layout === undefined) {
+                        this.layout = config.get('tabButtonLayout', 'icon-top');
+                    }
+                };
+                TabButton.prototype.selectTab = function (ev) {
+                    if (this.tab !== undefined) {
+                        if (!this.disabled) {
+                            this.ionTabButtonClick.emit({
+                                tab: this.tab,
+                                href: this.href,
+                                selected: this.selected
+                            });
+                        }
+                        ev.preventDefault();
+                    }
+                };
+                Object.defineProperty(TabButton.prototype, "hasLabel", {
+                    get: function () {
+                        return !!this.el.querySelector('ion-label');
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(TabButton.prototype, "hasIcon", {
+                    get: function () {
+                        return !!this.el.querySelector('ion-icon');
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(TabButton.prototype, "tabIndex", {
+                    get: function () {
+                        if (this.disabled) {
+                            return -1;
+                        }
+                        var hasTabIndex = this.el.hasAttribute('tabindex');
+                        if (hasTabIndex) {
+                            return this.el.getAttribute('tabindex');
+                        }
+                        return 0;
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                TabButton.prototype.render = function () {
+                    var _a;
+                    var _b = this, disabled = _b.disabled, hasIcon = _b.hasIcon, hasLabel = _b.hasLabel, tabIndex = _b.tabIndex, href = _b.href, rel = _b.rel, target = _b.target, layout = _b.layout, selected = _b.selected, tab = _b.tab;
+                    var mode = getIonMode(this);
+                    var attrs = {
+                        download: this.download,
+                        href: href,
+                        rel: rel,
+                        target: target
+                    };
+                    return (h(Host, { onClick: this.onClick, onKeyup: this.onKeyUp, role: "tab", tabindex: tabIndex, "aria-selected": selected ? 'true' : null, id: tab !== undefined ? "tab-button-" + tab : null, class: (_a = {},
+                            _a[mode] = true,
+                            _a['tab-selected'] = selected,
+                            _a['tab-disabled'] = disabled,
+                            _a['tab-has-label'] = hasLabel,
+                            _a['tab-has-icon'] = hasIcon,
+                            _a['tab-has-label-only'] = hasLabel && !hasIcon,
+                            _a['tab-has-icon-only'] = hasIcon && !hasLabel,
+                            _a["tab-layout-" + layout] = true,
+                            _a['ion-activatable'] = true,
+                            _a['ion-selectable'] = true,
+                            _a['ion-focusable'] = true,
+                            _a) }, h("a", Object.assign({}, attrs, { tabIndex: -1 }), h("slot", null), mode === 'md' && h("ion-ripple-effect", { type: "unbounded" }))));
+                };
+                Object.defineProperty(TabButton.prototype, "el", {
+                    get: function () { return getElement(this); },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(TabButton, "style", {
+                    get: function () { return "STYLE_TEXT_PLACEHOLDER:ion-tab-button"; },
+                    enumerable: true,
+                    configurable: true
+                });
+                return TabButton;
+            }());
+            exports('ion_tab_button', TabButton);
+        }
+    };
+});

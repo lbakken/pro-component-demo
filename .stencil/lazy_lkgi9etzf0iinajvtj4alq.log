@@ -1,0 +1,18 @@
+import { createEvent as __stencil_createEvent } from "@stencil/core";
+import { getConnect as __stencil_getConnect } from "@stencil/core";
+import { getContext as __stencil_getContext } from "@stencil/core";
+import { getElement as __stencil_getElement } from "@stencil/core";
+import { Host as __stencil_Host } from "@stencil/core";
+import { h as __stencil_h } from "@stencil/core";
+import { registerInstance as __stencil_registerInstance } from "@stencil/core";
+import { h } from '@stencil/core';
+export class ThanksModal {
+    constructor(hostRef) {
+        __stencil_registerInstance(this, hostRef);
+        this.closeThanks = __stencil_createEvent(this, "closeThanks", 7);
+    }
+    render() {
+        return (h("pro-modal", null, h("pro-content", null, h("h1", null, "Thank You for using our app!"), h("pro-grid", null, h("pro-row", null, h("pro-col", { size: "12" }, h("p", { class: "head" }, "If you haven't had enough yet, click here to try another flow!"), h("pro-button", { onClick: () => this.closeThanks.emit() }, "Do It Again!"))), h("pro-row", null, h("pro-col", { size: "12" }, h("h2", null, "Want to learn more?"))), h("pro-row", null, h("pro-col", null, h("p", { class: "content" }, "Checkout the links below explore our more technical references!"))), h("pro-row", null, h("pro-col", { size: "6" }, h("a", { href: "https://stenciljs.com/" }, h("pro-button", null, "StencilJS Docs"))), h("pro-col", { size: "6" }, h("a", { href: "https://docs.google.com/document/d/1XOm4rwpCExhkX0VSr7b3bP8nKClNq-SvAevzkjQlGFU/edit?usp=sharing" }, h("pro-button", null, "Our Docs")))), h("pro-row", null, h("pro-col", { size: "6" }, h("a", { href: "" }, h("pro-button", null, "UI Library Code"))), h("pro-col", { size: "6" }, h("a", { href: "https://www.npmjs.com/package/pro-ui-library" }, h("pro-button", null, "UI Library NPM")))), h("pro-row", null, h("pro-col", { size: "6" }, h("a", { href: "" }, h("pro-button", null, "App Code"))), h("pro-col", { size: "6" }, h("a", { href: "https://heroku.com" }, h("pro-button", null, "Heroku Hosting"))))))));
+    }
+    static get style() { return "STYLE_TEXT_PLACEHOLDER:thanks-modal"; }
+}

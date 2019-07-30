@@ -1,0 +1,26 @@
+import { createEvent as __stencil_createEvent } from "@stencil/core";
+import { getConnect as __stencil_getConnect } from "@stencil/core";
+import { getContext as __stencil_getContext } from "@stencil/core";
+import { getElement as __stencil_getElement } from "@stencil/core";
+import { Host as __stencil_Host } from "@stencil/core";
+import { h as __stencil_h } from "@stencil/core";
+import { registerInstance as __stencil_registerInstance } from "@stencil/core";
+import { h } from '@stencil/core';
+export class MyComponent {
+    constructor(hostRef) {
+        __stencil_registerInstance(this, hostRef);
+        //Jons Key -- 0e6736aa176b5c618a775168e0af47d8
+        this.apiKey = "0e6736aa176b5c618a775168e0af47d8";
+        this.city = "London";
+        //default Current weather url
+        this.apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${this.city}&appid=${this.apiKey}`;
+    }
+    componentWillLoad() {
+        fetch(this.apiUrl)
+            .then((response) => response.json())
+            .then(response => { this.weatherApiResponse = response; });
+    }
+    render() {
+        return (h("div", null, h("h2", null, "Weather API"), h("p", null, this.weatherApiResponse.coord.lon), h("p", null, this.weatherApiResponse.coord.lat)));
+    }
+}

@@ -1,0 +1,82 @@
+System.register(['./chunk-5603b3cb.system.js', './chunk-17730780.system.js'], function (exports) {
+    'use strict';
+    var registerInstance, createEvent, getIonMode, getElement, h, Host, createColorClasses;
+    return {
+        setters: [function (module) {
+                registerInstance = module.r;
+                createEvent = module.d;
+                getIonMode = module.f;
+                getElement = module.c;
+                h = module.h;
+                Host = module.H;
+            }, function (module) {
+                createColorClasses = module.c;
+            }],
+        execute: function () {
+            /**
+             * @virtualProp {"ios" | "md"} mode - The mode determines which platform styles to use.
+             */
+            var Label = /** @class */ (function () {
+                function Label(hostRef) {
+                    registerInstance(this, hostRef);
+                    this.noAnimate = false;
+                    this.ionStyle = createEvent(this, "ionStyle", 7);
+                }
+                Label.prototype.componentWillLoad = function () {
+                    this.noAnimate = (this.position === 'floating');
+                    this.emitStyle();
+                };
+                Label.prototype.componentDidLoad = function () {
+                    var _this = this;
+                    if (this.noAnimate) {
+                        setTimeout(function () {
+                            _this.noAnimate = false;
+                        }, 1000);
+                    }
+                };
+                Label.prototype.positionChanged = function () {
+                    this.emitStyle();
+                };
+                Label.prototype.emitStyle = function () {
+                    var _a;
+                    var position = this.position;
+                    this.ionStyle.emit((_a = {
+                            'label': true
+                        },
+                        _a["label-" + position] = position !== undefined,
+                        _a));
+                };
+                Label.prototype.hostData = function () {
+                    var _a;
+                    var position = this.position;
+                    var mode = getIonMode(this);
+                    return {
+                        class: Object.assign({}, createColorClasses(this.color), (_a = {}, _a[mode] = true, _a["label-" + position] = position !== undefined, _a["label-no-animate"] = (this.noAnimate), _a))
+                    };
+                };
+                Object.defineProperty(Label.prototype, "el", {
+                    get: function () { return getElement(this); },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(Label, "watchers", {
+                    get: function () {
+                        return {
+                            "position": ["positionChanged"]
+                        };
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Label.prototype.render = function () { return h(Host, this.hostData()); };
+                Object.defineProperty(Label, "style", {
+                    get: function () { return "STYLE_TEXT_PLACEHOLDER:ion-label"; },
+                    enumerable: true,
+                    configurable: true
+                });
+                return Label;
+            }());
+            exports('ion_label', Label);
+        }
+    };
+});

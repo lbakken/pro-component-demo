@@ -1,0 +1,139 @@
+System.register(['./chunk-5603b3cb.system.js', './chunk-17730780.system.js'], function (exports) {
+    'use strict';
+    var registerInstance, getIonMode, h, Host, getElement, createColorClasses, hostContext, openURL;
+    return {
+        setters: [function (module) {
+                registerInstance = module.r;
+                getIonMode = module.f;
+                h = module.h;
+                Host = module.H;
+                getElement = module.c;
+            }, function (module) {
+                createColorClasses = module.c;
+                hostContext = module.h;
+                openURL = module.o;
+            }],
+        execute: function () {
+            /**
+             * @virtualProp {"ios" | "md"} mode - The mode determines which platform styles to use.
+             *
+             * @slot - Content is placed between the named slots if provided without a slot.
+             * @slot start - Content is placed to the left of the item text in LTR, and to the right in RTL.
+             * @slot end - Content is placed to the right of the item text in LTR, and to the left in RTL.
+             */
+            var Item = /** @class */ (function () {
+                function Item(hostRef) {
+                    registerInstance(this, hostRef);
+                    this.itemStyles = new Map();
+                    this.multipleInputs = false;
+                    /**
+                     * If `true`, a button tag will be rendered and the item will be tappable.
+                     */
+                    this.button = false;
+                    /**
+                     * The icon to use when `detail` is set to `true`.
+                     */
+                    this.detailIcon = 'ios-arrow-forward';
+                    /**
+                     * If `true`, the user cannot interact with the item.
+                     */
+                    this.disabled = false;
+                    /**
+                     * When using a router, it specifies the transition direction when navigating to
+                     * another page using `href`.
+                     */
+                    this.routerDirection = 'forward';
+                    /**
+                     * The type of the button. Only used when an `onclick` or `button` property is present.
+                     */
+                    this.type = 'button';
+                }
+                Item.prototype.itemStyle = function (ev) {
+                    ev.stopPropagation();
+                    var tagName = ev.target.tagName;
+                    var updatedStyles = ev.detail;
+                    var newStyles = {};
+                    var childStyles = this.itemStyles.get(tagName) || {};
+                    var hasStyleChange = false;
+                    Object.keys(updatedStyles).forEach(function (key) {
+                        if (updatedStyles[key]) {
+                            var itemKey = "item-" + key;
+                            if (!childStyles[itemKey]) {
+                                hasStyleChange = true;
+                            }
+                            newStyles[itemKey] = true;
+                        }
+                    });
+                    if (!hasStyleChange && Object.keys(newStyles).length !== Object.keys(childStyles).length) {
+                        hasStyleChange = true;
+                    }
+                    if (hasStyleChange) {
+                        this.itemStyles.set(tagName, newStyles);
+                        this.el.forceUpdate();
+                    }
+                };
+                Item.prototype.componentDidLoad = function () {
+                    // The following elements have a clickable cover that is relative to the entire item
+                    var covers = this.el.querySelectorAll('ion-checkbox, ion-datetime, ion-select, ion-radio');
+                    // The following elements can accept focus alongside the previous elements
+                    // therefore if these elements are also a child of item, we don't want the
+                    // input cover on top of those interfering with their clicks
+                    var inputs = this.el.querySelectorAll('ion-input, ion-range, ion-searchbar, ion-segment, ion-textarea, ion-toggle');
+                    // Check for multiple inputs to change the position of the input cover to relative
+                    // for all of the covered inputs above
+                    this.multipleInputs = covers.length + inputs.length > 1;
+                };
+                // If the item contains an input including a checkbox, datetime, select, or radio
+                // then the item will have a clickable input cover that covers the item
+                // that should get the hover, focused and activated states UNLESS it has multiple
+                // inputs, then those need to individually get each click
+                Item.prototype.hasCover = function () {
+                    var inputs = this.el.querySelectorAll('ion-checkbox, ion-datetime, ion-select, ion-radio');
+                    return inputs.length === 1 && !this.multipleInputs;
+                };
+                // If the item has an href or button property it will render a native
+                // anchor or button that is clickable
+                Item.prototype.isClickable = function () {
+                    return (this.href !== undefined || this.button);
+                };
+                Item.prototype.canActivate = function () {
+                    return (this.isClickable() || this.hasCover());
+                };
+                Item.prototype.render = function () {
+                    var _a;
+                    var _b = this, detail = _b.detail, detailIcon = _b.detailIcon, download = _b.download, lines = _b.lines, disabled = _b.disabled, href = _b.href, rel = _b.rel, target = _b.target, routerDirection = _b.routerDirection;
+                    var childStyles = {};
+                    var mode = getIonMode(this);
+                    var clickable = this.isClickable();
+                    var canActivate = this.canActivate();
+                    var TagType = clickable ? (href === undefined ? 'button' : 'a') : 'div';
+                    var attrs = (TagType === 'button')
+                        ? { type: this.type }
+                        : {
+                            download: download,
+                            href: href,
+                            rel: rel,
+                            target: target
+                        };
+                    var showDetail = detail !== undefined ? detail : mode === 'ios' && clickable;
+                    this.itemStyles.forEach(function (value) {
+                        Object.assign(childStyles, value);
+                    });
+                    return (h(Host, { "aria-disabled": disabled ? 'true' : null, class: Object.assign({}, childStyles, createColorClasses(this.color), (_a = { 'item': true }, _a[mode] = true, _a["item-lines-" + lines] = lines !== undefined, _a['item-disabled'] = disabled, _a['in-list'] = hostContext('ion-list', this.el), _a['item-multiple-inputs'] = this.multipleInputs, _a['ion-activatable'] = canActivate, _a['ion-focusable'] = true, _a)) }, h(TagType, Object.assign({}, attrs, { class: "item-native", disabled: disabled, onClick: function (ev) { return openURL(href, ev, routerDirection); } }), h("slot", { name: "start" }), h("div", { class: "item-inner" }, h("div", { class: "input-wrapper" }, h("slot", null)), h("slot", { name: "end" }), showDetail && h("ion-icon", { icon: detailIcon, lazy: false, class: "item-detail-icon" }), h("div", { class: "item-inner-highlight" })), canActivate && mode === 'md' && h("ion-ripple-effect", null)), h("div", { class: "item-highlight" })));
+                };
+                Object.defineProperty(Item.prototype, "el", {
+                    get: function () { return getElement(this); },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(Item, "style", {
+                    get: function () { return "STYLE_TEXT_PLACEHOLDER:ion-item"; },
+                    enumerable: true,
+                    configurable: true
+                });
+                return Item;
+            }());
+            exports('ion_item', Item);
+        }
+    };
+});

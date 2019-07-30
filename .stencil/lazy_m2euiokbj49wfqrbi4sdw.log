@@ -1,0 +1,29 @@
+import { createEvent as __stencil_createEvent } from "@stencil/core";
+import { getConnect as __stencil_getConnect } from "@stencil/core";
+import { getContext as __stencil_getContext } from "@stencil/core";
+import { getElement as __stencil_getElement } from "@stencil/core";
+import { Host as __stencil_Host } from "@stencil/core";
+import { h as __stencil_h } from "@stencil/core";
+import { registerInstance as __stencil_registerInstance } from "@stencil/core";
+import { h } from '@stencil/core';
+export class LocationCard {
+    constructor(hostRef) {
+        __stencil_registerInstance(this, hostRef);
+        this.city = '';
+        this.location = __stencil_createEvent(this, "location", 7);
+    }
+    handleSubmit() {
+        this.location.emit({ city: this.city });
+    }
+    handleLocation() {
+        this.location.emit();
+    }
+    onInputChange(ev) {
+        this.city = ev.detail;
+    }
+    render() {
+        return (h("pro-card", null, h("pro-grid", null, h("pro-row", { class: "extra-space" }, h("pro-col", { size: "8" }, h("pro-input", { placeholder: "Enter City . . .", label: "City" })), h("pro-col", { size: "4", class: "extra-space" }, h("pro-button", { onClick: () => this.handleSubmit() }, "Submit"))), h("pro-row", { class: "extra-space" }, h("pro-col", { size: "12" }, h("img", { id: "location", onClick: () => this.handleLocation(), src: "https://img.icons8.com/material/24/000000/worldwide-location.png" }), h("pro-label", { onClick: () => this.handleLocation(), for: "location", class: "location-text" }, "Use my current location"))))));
+    }
+    get el() { return __stencil_getElement(this); }
+    static get style() { return "STYLE_TEXT_PLACEHOLDER:location-card"; }
+}

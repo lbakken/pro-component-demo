@@ -1,0 +1,42 @@
+System.register(['./chunk-5603b3cb.system.js', './chunk-17730780.system.js'], function (exports) {
+    'use strict';
+    var registerInstance, getIonMode, h, Host, createColorClasses;
+    return {
+        setters: [function (module) {
+                registerInstance = module.r;
+                getIonMode = module.f;
+                h = module.h;
+                Host = module.H;
+            }, function (module) {
+                createColorClasses = module.c;
+            }],
+        execute: function () {
+            /**
+             * @virtualProp {"ios" | "md"} mode - The mode determines which platform styles to use.
+             */
+            var Badge = /** @class */ (function () {
+                function Badge(hostRef) {
+                    registerInstance(this, hostRef);
+                }
+                Badge.prototype.hostData = function () {
+                    var _a;
+                    var mode = getIonMode(this);
+                    return {
+                        class: Object.assign({}, createColorClasses(this.color), (_a = {}, _a[mode] = true, _a))
+                    };
+                };
+                Badge.prototype.__stencil_render = function () {
+                    return h("slot", null);
+                };
+                Badge.prototype.render = function () { return h(Host, this.hostData(), this.__stencil_render()); };
+                Object.defineProperty(Badge, "style", {
+                    get: function () { return "STYLE_TEXT_PLACEHOLDER:ion-badge"; },
+                    enumerable: true,
+                    configurable: true
+                });
+                return Badge;
+            }());
+            exports('ion_badge', Badge);
+        }
+    };
+});

@@ -1,0 +1,31 @@
+.extra-space {
+  margin-top: 15px;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+.location-text {
+  cursor: pointer;
+}
+
+#location {
+  float: left;
+  width: 18px;
+  height: 18px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 400px) {
+  #location-text {
+    font-size: 20px;
+  }
+
+  #location {
+    width: 20px;
+    height: 20px;
+  }
+
+}

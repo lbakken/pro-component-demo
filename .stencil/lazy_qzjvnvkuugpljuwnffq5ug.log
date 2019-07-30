@@ -1,0 +1,17 @@
+import { createEvent as __stencil_createEvent } from "@stencil/core";
+import { getConnect as __stencil_getConnect } from "@stencil/core";
+import { getContext as __stencil_getContext } from "@stencil/core";
+import { getElement as __stencil_getElement } from "@stencil/core";
+import { Host as __stencil_Host } from "@stencil/core";
+import { h as __stencil_h } from "@stencil/core";
+import { registerInstance as __stencil_registerInstance } from "@stencil/core";
+import { h } from '@stencil/core';
+export class WelcomeCard {
+    constructor(hostRef) {
+        __stencil_registerInstance(this, hostRef);
+    }
+    render() {
+        return (h("pro-card", null, h("pro-grid", null, h("pro-row", null, h("pro-col", { size: "8" }, h("h2", null, "Welcome to our Intern Project!")), h("pro-col", { size: "4" }, h("h3", null, "Stencil Web Components"))), h("pro-row", null, h("pro-col", { size: "12" }, h("p", null, "For our project, we used stencil web components to create a user interface library and then used that library to create this application! This application checks recent weather events in your area and, based on the weather and whether or not you are a returning customer, will offer you a quote form, a claim form, or redirect you to another insurance provider."))), h("pro-row", null, h("pro-col", { size: "12" }, h("p", null, "To use our app, either enter a city below or allow your web browser to use your location."))))));
+    }
+    static get style() { return "STYLE_TEXT_PLACEHOLDER:welcome-card"; }
+}

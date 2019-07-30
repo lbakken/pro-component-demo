@@ -1,0 +1,36 @@
+import { createEvent as __stencil_createEvent } from "@stencil/core";
+import { getConnect as __stencil_getConnect } from "@stencil/core";
+import { getContext as __stencil_getContext } from "@stencil/core";
+import { getElement as __stencil_getElement } from "@stencil/core";
+import { Host as __stencil_Host } from "@stencil/core";
+import { h as __stencil_h } from "@stencil/core";
+import { registerInstance as __stencil_registerInstance } from "@stencil/core";
+import { getIonMode } from '../../global/ionic-global';
+/**
+ * @virtualProp {"ios" | "md"} mode - The mode determines which platform styles to use.
+ */
+export class Header {
+    constructor(hostRef) {
+        __stencil_registerInstance(this, hostRef);
+        /**
+         * If `true`, the header will be translucent. Only applies to `ios` mode.
+         * Note: In order to scroll content behind the header, the `fullscreen`
+         * attribute needs to be set on the content.
+         */
+        this.translucent = false;
+    }
+    hostData() {
+        const mode = getIonMode(this);
+        return {
+            class: {
+                [mode]: true,
+                // Used internally for styling
+                [`header-${mode}`]: true,
+                [`header-translucent`]: this.translucent,
+                [`header-translucent-${mode}`]: this.translucent,
+            }
+        };
+    }
+    render() { return __stencil_h(__stencil_Host, this.hostData()); }
+    static get style() { return "STYLE_TEXT_PLACEHOLDER:ion-header"; }
+}

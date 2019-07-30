@@ -1,0 +1,76 @@
+System.register(['./chunk-5603b3cb.system.js', './chunk-17730780.system.js'], function (exports) {
+    'use strict';
+    var registerInstance, getIonMode, h, Host, getElement, createColorClasses;
+    return {
+        setters: [function (module) {
+                registerInstance = module.r;
+                getIonMode = module.f;
+                h = module.h;
+                Host = module.H;
+                getElement = module.c;
+            }, function (module) {
+                createColorClasses = module.c;
+            }],
+        execute: function () {
+            /**
+             * @virtualProp {"ios" | "md"} mode - The mode determines which platform styles to use.
+             *
+             * @slot - Content is placed between the named slots if provided without a slot.
+             * @slot start - Content is placed to the left of the option text in LTR, and to the right in RTL.
+             * @slot top - Content is placed above the option text.
+             * @slot icon-only - Should be used on an icon in an option that has no text.
+             * @slot bottom - Content is placed below the option text.
+             * @slot end - Content is placed to the right of the option text in LTR, and to the left in RTL.
+             */
+            var ItemOption = /** @class */ (function () {
+                function ItemOption(hostRef) {
+                    registerInstance(this, hostRef);
+                    /**
+                     * If `true`, the user cannot interact with the item option.
+                     */
+                    this.disabled = false;
+                    /**
+                     * If `true`, the option will expand to take up the available width and cover any other options.
+                     */
+                    this.expandable = false;
+                    /**
+                     * The type of the button.
+                     */
+                    this.type = 'button';
+                    this.onClick = function (ev) {
+                        var el = ev.target.closest('ion-item-option');
+                        if (el) {
+                            ev.preventDefault();
+                        }
+                    };
+                }
+                ItemOption.prototype.render = function () {
+                    var _a;
+                    var _b = this, disabled = _b.disabled, expandable = _b.expandable, href = _b.href;
+                    var TagType = href === undefined ? 'button' : 'a';
+                    var mode = getIonMode(this);
+                    var attrs = (TagType === 'button')
+                        ? { type: this.type }
+                        : {
+                            download: this.download,
+                            href: this.href,
+                            target: this.target
+                        };
+                    return (h(Host, { onClick: this.onClick, class: Object.assign({}, createColorClasses(this.color), (_a = {}, _a[mode] = true, _a['item-option-disabled'] = disabled, _a['item-option-expandable'] = expandable, _a['ion-activatable'] = true, _a)) }, h(TagType, Object.assign({}, attrs, { class: "button-native", disabled: disabled }), h("span", { class: "button-inner" }, h("slot", { name: "top" }), h("div", { class: "horizontal-wrapper" }, h("slot", { name: "start" }), h("slot", { name: "icon-only" }), h("slot", null), h("slot", { name: "end" })), h("slot", { name: "bottom" })), mode === 'md' && h("ion-ripple-effect", null))));
+                };
+                Object.defineProperty(ItemOption.prototype, "el", {
+                    get: function () { return getElement(this); },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(ItemOption, "style", {
+                    get: function () { return "STYLE_TEXT_PLACEHOLDER:ion-item-option"; },
+                    enumerable: true,
+                    configurable: true
+                });
+                return ItemOption;
+            }());
+            exports('ion_item_option', ItemOption);
+        }
+    };
+});

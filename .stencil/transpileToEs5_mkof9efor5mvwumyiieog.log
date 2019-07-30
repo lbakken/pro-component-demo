@@ -1,0 +1,50 @@
+System.register(['./chunk-5603b3cb.system.js', './chunk-02683056.system.js'], function (exports) {
+    'use strict';
+    var registerInstance, getIonMode, config, h, Host, sanitizeDOMString;
+    return {
+        setters: [function (module) {
+                registerInstance = module.r;
+                getIonMode = module.f;
+                config = module.e;
+                h = module.h;
+                Host = module.H;
+            }, function (module) {
+                sanitizeDOMString = module.s;
+            }],
+        execute: function () {
+            var InfiniteScrollContent = /** @class */ (function () {
+                function InfiniteScrollContent(hostRef) {
+                    registerInstance(this, hostRef);
+                }
+                InfiniteScrollContent.prototype.componentDidLoad = function () {
+                    if (this.loadingSpinner === undefined) {
+                        var mode = getIonMode(this);
+                        this.loadingSpinner = config.get('infiniteLoadingSpinner', config.get('spinner', mode === 'ios' ? 'lines' : 'crescent'));
+                    }
+                };
+                InfiniteScrollContent.prototype.hostData = function () {
+                    var _a;
+                    var mode = getIonMode(this);
+                    return {
+                        class: (_a = {},
+                            _a[mode] = true,
+                            // Used internally for styling
+                            _a["infinite-scroll-content-" + mode] = true,
+                            _a)
+                    };
+                };
+                InfiniteScrollContent.prototype.__stencil_render = function () {
+                    return (h("div", { class: "infinite-loading" }, this.loadingSpinner && (h("div", { class: "infinite-loading-spinner" }, h("ion-spinner", { name: this.loadingSpinner }))), this.loadingText && (h("div", { class: "infinite-loading-text", innerHTML: sanitizeDOMString(this.loadingText) }))));
+                };
+                InfiniteScrollContent.prototype.render = function () { return h(Host, this.hostData(), this.__stencil_render()); };
+                Object.defineProperty(InfiniteScrollContent, "style", {
+                    get: function () { return "STYLE_TEXT_PLACEHOLDER:ion-infinite-scroll-content"; },
+                    enumerable: true,
+                    configurable: true
+                });
+                return InfiniteScrollContent;
+            }());
+            exports('ion_infinite_scroll_content', InfiniteScrollContent);
+        }
+    };
+});

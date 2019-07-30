@@ -1,0 +1,32 @@
+import { createEvent as __stencil_createEvent } from "@stencil/core";
+import { getConnect as __stencil_getConnect } from "@stencil/core";
+import { getContext as __stencil_getContext } from "@stencil/core";
+import { getElement as __stencil_getElement } from "@stencil/core";
+import { Host as __stencil_Host } from "@stencil/core";
+import { h as __stencil_h } from "@stencil/core";
+import { registerInstance as __stencil_registerInstance } from "@stencil/core";
+import { getIonMode } from '../../global/ionic-global';
+export class Slide {
+    constructor(hostRef) {
+        __stencil_registerInstance(this, hostRef);
+        this.ionSlideChanged = __stencil_createEvent(this, "ionSlideChanged", 7);
+    }
+    componentDidLoad() {
+        this.ionSlideChanged.emit();
+    }
+    componentDidUnload() {
+        this.ionSlideChanged.emit();
+    }
+    hostData() {
+        const mode = getIonMode(this);
+        return {
+            class: {
+                [mode]: true,
+                'swiper-slide': true,
+                'swiper-zoom-container': true
+            }
+        };
+    }
+    render() { return __stencil_h(__stencil_Host, this.hostData()); }
+    static get style() { return "STYLE_TEXT_PLACEHOLDER:ion-slide"; }
+}

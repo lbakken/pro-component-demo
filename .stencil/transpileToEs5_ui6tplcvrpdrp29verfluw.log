@@ -1,0 +1,72 @@
+System.register(['./chunk-5603b3cb.system.js'], function (exports) {
+    'use strict';
+    var registerInstance, createEvent, h, getElement;
+    return {
+        setters: [function (module) {
+                registerInstance = module.r;
+                createEvent = module.d;
+                h = module.h;
+                getElement = module.c;
+            }],
+        execute: function () {
+            var ProCheckbox = /** @class */ (function () {
+                function ProCheckbox(hostRef) {
+                    var _this = this;
+                    registerInstance(this, hostRef);
+                    this.disabled = false;
+                    this.checked = false;
+                    this.onClick = function () {
+                        _this.checked = !_this.checked;
+                    };
+                    this.proChange = createEvent(this, "proChange", 7);
+                    this.proStyle = createEvent(this, "proStyle", 7);
+                }
+                ProCheckbox.prototype.componentWillLoad = function () {
+                    this.emitStyle();
+                };
+                ProCheckbox.prototype.checkedChanged = function (isChecked) {
+                    this.proChange.emit({
+                        checked: isChecked,
+                        value: this.value
+                    });
+                    this.emitStyle();
+                };
+                ProCheckbox.prototype.disabledChanged = function () {
+                    this.emitStyle();
+                };
+                ProCheckbox.prototype.emitStyle = function () {
+                    this.proStyle.emit({
+                        'checkbox-checked': this.checked,
+                        'interactive-disabled': this.disabled,
+                        'checkbox-value': this.value
+                    });
+                };
+                ProCheckbox.prototype.render = function () {
+                    return h("input", { type: "checkbox", onClick: this.onClick });
+                };
+                Object.defineProperty(ProCheckbox.prototype, "el", {
+                    get: function () { return getElement(this); },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(ProCheckbox, "watchers", {
+                    get: function () {
+                        return {
+                            "checked": ["checkedChanged"],
+                            "disabled": ["disabledChanged"]
+                        };
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(ProCheckbox, "style", {
+                    get: function () { return "STYLE_TEXT_PLACEHOLDER:pro-checkbox"; },
+                    enumerable: true,
+                    configurable: true
+                });
+                return ProCheckbox;
+            }());
+            exports('pro_checkbox', ProCheckbox);
+        }
+    };
+});

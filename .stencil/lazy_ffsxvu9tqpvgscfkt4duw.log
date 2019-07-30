@@ -1,0 +1,18 @@
+import { createEvent as __stencil_createEvent } from "@stencil/core";
+import { getConnect as __stencil_getConnect } from "@stencil/core";
+import { getContext as __stencil_getContext } from "@stencil/core";
+import { getElement as __stencil_getElement } from "@stencil/core";
+import { Host as __stencil_Host } from "@stencil/core";
+import { h as __stencil_h } from "@stencil/core";
+import { registerInstance as __stencil_registerInstance } from "@stencil/core";
+import { h } from '@stencil/core';
+export class OopsModal {
+    constructor(hostRef) {
+        __stencil_registerInstance(this, hostRef);
+        this.closeOops = __stencil_createEvent(this, "closeOops", 7);
+    }
+    render() {
+        return (h("pro-modal", null, h("pro-content", null, h("h1", null, "Well this is strange. . ."), h("pro-grid", null, h("pro-row", null, h("pro-col", { size: "12" }, h("p", { class: "head" }, "We couldn't find that city."))), h("pro-row", null, h("pro-col", { size: "12" }, h("p", { class: "content" }, "Don't worry, let's try again!"), h("pro-button", { onClick: () => this.closeOops.emit() }, "Try Again!")))))));
+    }
+    static get style() { return "STYLE_TEXT_PLACEHOLDER:oops-modal"; }
+}

@@ -1,0 +1,23 @@
+import { createEvent as __stencil_createEvent } from "@stencil/core";
+import { getConnect as __stencil_getConnect } from "@stencil/core";
+import { getContext as __stencil_getContext } from "@stencil/core";
+import { getElement as __stencil_getElement } from "@stencil/core";
+import { Host as __stencil_Host } from "@stencil/core";
+import { h as __stencil_h } from "@stencil/core";
+import { registerInstance as __stencil_registerInstance } from "@stencil/core";
+import { h } from '@stencil/core';
+export class QuoteForm {
+    constructor(hostRef) {
+        __stencil_registerInstance(this, hostRef);
+        this.isCustomer = __stencil_createEvent(this, "isCustomer", 7);
+    }
+    onIsCustomer(ans) {
+        this.isCustomer.emit({ response: ans });
+        this.el.querySelector('pro-modal').dismiss();
+    }
+    render() {
+        return (h("pro-modal", null, h("pro-content", null, h("h1", { class: "header" }, "Are You A Returning Customer?"), h("pro-grid", { class: "header" }, h("pro-row", null, h("pro-col", { size: "6" }, h("pro-button", { onClick: () => this.onIsCustomer(true) }, "YES")), h("pro-col", { size: "6" }, h("pro-button", { onClick: () => this.onIsCustomer(false) }, "NO")))))));
+    }
+    get el() { return __stencil_getElement(this); }
+    static get style() { return "STYLE_TEXT_PLACEHOLDER:prog-cust-question"; }
+}

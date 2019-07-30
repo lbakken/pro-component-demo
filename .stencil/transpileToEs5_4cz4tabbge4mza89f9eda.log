@@ -1,0 +1,65 @@
+System.register(['./chunk-5603b3cb.system.js', './chunk-17730780.system.js'], function (exports) {
+    'use strict';
+    var registerInstance, h, config, getIonMode, getElement, Host, hostContext;
+    return {
+        setters: [function (module) {
+                registerInstance = module.r;
+                h = module.h;
+                config = module.e;
+                getIonMode = module.f;
+                getElement = module.c;
+                Host = module.H;
+            }, function (module) {
+                hostContext = module.h;
+            }],
+        execute: function () {
+            var SkeletonText = /** @class */ (function () {
+                function SkeletonText(hostRef) {
+                    registerInstance(this, hostRef);
+                    /**
+                     * If `true`, the skeleton text will animate.
+                     */
+                    this.animated = false;
+                }
+                SkeletonText.prototype.calculateWidth = function () {
+                    // If width was passed in to the property use that first
+                    if (this.width !== undefined) {
+                        return {
+                            style: {
+                                width: this.width
+                            }
+                        };
+                    }
+                    return;
+                };
+                SkeletonText.prototype.__stencil_render = function () {
+                    return (h("span", null, "\u00A0"));
+                };
+                SkeletonText.prototype.hostData = function () {
+                    var _a;
+                    var animated = this.animated && config.getBoolean('animated', true);
+                    var inMedia = hostContext('ion-avatar', this.el) || hostContext('ion-thumbnail', this.el);
+                    var mode = getIonMode(this);
+                    return Object.assign({ class: (_a = {},
+                            _a[mode] = true,
+                            _a['skeleton-text-animated'] = animated,
+                            _a['in-media'] = inMedia,
+                            _a) }, this.calculateWidth());
+                };
+                Object.defineProperty(SkeletonText.prototype, "el", {
+                    get: function () { return getElement(this); },
+                    enumerable: true,
+                    configurable: true
+                });
+                SkeletonText.prototype.render = function () { return h(Host, this.hostData(), this.__stencil_render()); };
+                Object.defineProperty(SkeletonText, "style", {
+                    get: function () { return "STYLE_TEXT_PLACEHOLDER:ion-skeleton-text"; },
+                    enumerable: true,
+                    configurable: true
+                });
+                return SkeletonText;
+            }());
+            exports('ion_skeleton_text', SkeletonText);
+        }
+    };
+});

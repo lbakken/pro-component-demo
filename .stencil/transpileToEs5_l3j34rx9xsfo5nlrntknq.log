@@ -1,0 +1,27 @@
+System.register(['./chunk-5603b3cb.system.js'], function (exports) {
+    'use strict';
+    var registerInstance, h;
+    return {
+        setters: [function (module) {
+                registerInstance = module.r;
+                h = module.h;
+            }],
+        execute: function () {
+            var ProLabel = /** @class */ (function () {
+                function ProLabel(hostRef) {
+                    registerInstance(this, hostRef);
+                }
+                ProLabel.prototype.render = function () {
+                    return (h("label", { htmlfor: this.for }, h("slot", null)));
+                };
+                Object.defineProperty(ProLabel, "style", {
+                    get: function () { return "STYLE_TEXT_PLACEHOLDER:pro-label"; },
+                    enumerable: true,
+                    configurable: true
+                });
+                return ProLabel;
+            }());
+            exports('pro_label', ProLabel);
+        }
+    };
+});

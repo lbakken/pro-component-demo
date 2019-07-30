@@ -1,0 +1,46 @@
+System.register(['./chunk-5603b3cb.system.js'], function (exports) {
+    'use strict';
+    var registerInstance, createEvent, getIonMode, h, Host;
+    return {
+        setters: [function (module) {
+                registerInstance = module.r;
+                createEvent = module.d;
+                getIonMode = module.f;
+                h = module.h;
+                Host = module.H;
+            }],
+        execute: function () {
+            var Slide = /** @class */ (function () {
+                function Slide(hostRef) {
+                    registerInstance(this, hostRef);
+                    this.ionSlideChanged = createEvent(this, "ionSlideChanged", 7);
+                }
+                Slide.prototype.componentDidLoad = function () {
+                    this.ionSlideChanged.emit();
+                };
+                Slide.prototype.componentDidUnload = function () {
+                    this.ionSlideChanged.emit();
+                };
+                Slide.prototype.hostData = function () {
+                    var _a;
+                    var mode = getIonMode(this);
+                    return {
+                        class: (_a = {},
+                            _a[mode] = true,
+                            _a['swiper-slide'] = true,
+                            _a['swiper-zoom-container'] = true,
+                            _a)
+                    };
+                };
+                Slide.prototype.render = function () { return h(Host, this.hostData()); };
+                Object.defineProperty(Slide, "style", {
+                    get: function () { return "STYLE_TEXT_PLACEHOLDER:ion-slide"; },
+                    enumerable: true,
+                    configurable: true
+                });
+                return Slide;
+            }());
+            exports('ion_slide', Slide);
+        }
+    };
+});

@@ -1,0 +1,83 @@
+System.register(['./chunk-5603b3cb.system.js', './chunk-17730780.system.js', './chunk-05185aad.system.js'], function (exports) {
+    'use strict';
+    var registerInstance, config, getIonMode, h, Host, createColorClasses, clamp;
+    return {
+        setters: [function (module) {
+                registerInstance = module.r;
+                config = module.e;
+                getIonMode = module.f;
+                h = module.h;
+                Host = module.H;
+            }, function (module) {
+                createColorClasses = module.c;
+            }, function (module) {
+                clamp = module.c;
+            }],
+        execute: function () {
+            /**
+             * @virtualProp {"ios" | "md"} mode - The mode determines which platform styles to use.
+             */
+            var ProgressBar = /** @class */ (function () {
+                function ProgressBar(hostRef) {
+                    registerInstance(this, hostRef);
+                    /**
+                     * The state of the progress bar, based on if the time the process takes is known or not.
+                     * Default options are: `"determinate"` (no animation), `"indeterminate"` (animate from left to right).
+                     */
+                    this.type = 'determinate';
+                    /**
+                     * If true, reverse the progress bar direction.
+                     */
+                    this.reversed = false;
+                    /**
+                     * The value determines how much of the active bar should display when the
+                     * `type` is `"determinate"`.
+                     * The value should be between [0, 1].
+                     */
+                    this.value = 0;
+                    /**
+                     * If the buffer and value are smaller than 1, the buffer circles will show.
+                     * The buffer should be between [0, 1].
+                     */
+                    this.buffer = 1;
+                }
+                ProgressBar.prototype.hostData = function () {
+                    var _a;
+                    var _b = this, color = _b.color, type = _b.type, reversed = _b.reversed, value = _b.value;
+                    var paused = config.getBoolean('_testing');
+                    var mode = getIonMode(this);
+                    return {
+                        'role': 'progressbar',
+                        'aria-valuenow': type === 'determinate' ? value : null,
+                        'aria-valuemin': 0,
+                        'aria-valuemax': 1,
+                        class: Object.assign({}, createColorClasses(color), (_a = {}, _a[mode] = true, _a["progress-bar-" + type] = true, _a['progress-paused'] = paused, _a['progress-bar-reversed'] = document.dir === 'rtl' ? !reversed : reversed, _a))
+                    };
+                };
+                ProgressBar.prototype.__stencil_render = function () {
+                    if (this.type === 'indeterminate') {
+                        return [
+                            h("div", { class: "indeterminate-bar-primary" }, h("span", { class: "progress-indeterminate" })),
+                            h("div", { class: "indeterminate-bar-secondary" }, h("span", { class: "progress-indeterminate" }))
+                        ];
+                    }
+                    var value = clamp(0, this.value, 1);
+                    var buffer = clamp(0, this.buffer, 1);
+                    return [
+                        h("div", { class: "progress", style: { transform: "scaleX(" + value + ")" } }),
+                        buffer !== 1 && h("div", { class: "buffer-circles" }),
+                        h("div", { class: "progress-buffer-bar", style: { transform: "scaleX(" + buffer + ")" } }),
+                    ];
+                };
+                ProgressBar.prototype.render = function () { return h(Host, this.hostData(), this.__stencil_render()); };
+                Object.defineProperty(ProgressBar, "style", {
+                    get: function () { return "STYLE_TEXT_PLACEHOLDER:ion-progress-bar"; },
+                    enumerable: true,
+                    configurable: true
+                });
+                return ProgressBar;
+            }());
+            exports('ion_progress_bar', ProgressBar);
+        }
+    };
+});

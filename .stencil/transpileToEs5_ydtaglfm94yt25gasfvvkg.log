@@ -1,0 +1,132 @@
+System.register(['./chunk-5603b3cb.system.js', './chunk-17730780.system.js', './chunk-05185aad.system.js'], function (exports) {
+    'use strict';
+    var registerInstance, createEvent, getIonMode, h, Host, getElement, createColorClasses, hostContext, findItemLabel;
+    return {
+        setters: [function (module) {
+                registerInstance = module.r;
+                createEvent = module.d;
+                getIonMode = module.f;
+                h = module.h;
+                Host = module.H;
+                getElement = module.c;
+            }, function (module) {
+                createColorClasses = module.c;
+                hostContext = module.h;
+            }, function (module) {
+                findItemLabel = module.f;
+            }],
+        execute: function () {
+            /**
+             * @virtualProp {"ios" | "md"} mode - The mode determines which platform styles to use.
+             */
+            var Radio = /** @class */ (function () {
+                function Radio(hostRef) {
+                    var _this = this;
+                    registerInstance(this, hostRef);
+                    this.inputId = "ion-rb-" + radioButtonIds++;
+                    /**
+                     * The name of the control, which is submitted with the form data.
+                     */
+                    this.name = this.inputId;
+                    /**
+                     * If `true`, the user cannot interact with the radio.
+                     */
+                    this.disabled = false;
+                    /**
+                     * If `true`, the radio is selected.
+                     */
+                    this.checked = false;
+                    this.onFocus = function () {
+                        _this.ionFocus.emit();
+                    };
+                    this.onBlur = function () {
+                        _this.ionBlur.emit();
+                    };
+                    this.onClick = function () {
+                        if (_this.checked) {
+                            _this.ionDeselect.emit();
+                        }
+                        else {
+                            _this.checked = true;
+                        }
+                    };
+                    this.ionRadioDidLoad = createEvent(this, "ionRadioDidLoad", 7);
+                    this.ionRadioDidUnload = createEvent(this, "ionRadioDidUnload", 7);
+                    this.ionStyle = createEvent(this, "ionStyle", 7);
+                    this.ionSelect = createEvent(this, "ionSelect", 7);
+                    this.ionDeselect = createEvent(this, "ionDeselect", 7);
+                    this.ionFocus = createEvent(this, "ionFocus", 7);
+                    this.ionBlur = createEvent(this, "ionBlur", 7);
+                }
+                Radio.prototype.colorChanged = function () {
+                    this.emitStyle();
+                };
+                Radio.prototype.checkedChanged = function (isChecked) {
+                    if (isChecked) {
+                        this.ionSelect.emit({
+                            checked: true,
+                            value: this.value
+                        });
+                    }
+                    this.emitStyle();
+                };
+                Radio.prototype.disabledChanged = function () {
+                    this.emitStyle();
+                };
+                Radio.prototype.componentWillLoad = function () {
+                    if (this.value === undefined) {
+                        this.value = this.inputId;
+                    }
+                    this.emitStyle();
+                };
+                Radio.prototype.componentDidLoad = function () {
+                    this.ionRadioDidLoad.emit();
+                };
+                Radio.prototype.componentDidUnload = function () {
+                    this.ionRadioDidUnload.emit();
+                };
+                Radio.prototype.emitStyle = function () {
+                    this.ionStyle.emit({
+                        'radio-checked': this.checked,
+                        'interactive-disabled': this.disabled,
+                    });
+                };
+                Radio.prototype.render = function () {
+                    var _a;
+                    var _b = this, inputId = _b.inputId, disabled = _b.disabled, checked = _b.checked, color = _b.color, el = _b.el;
+                    var mode = getIonMode(this);
+                    var labelId = inputId + '-lbl';
+                    var label = findItemLabel(el);
+                    if (label) {
+                        label.id = labelId;
+                    }
+                    return (h(Host, { onClick: this.onClick, role: "radio", "aria-disabled": disabled ? 'true' : null, "aria-checked": "" + checked, "aria-labelledby": labelId, class: Object.assign({}, createColorClasses(color), (_a = {}, _a[mode] = true, _a['in-item'] = hostContext('ion-item', el), _a['interactive'] = true, _a['radio-checked'] = checked, _a['radio-disabled'] = disabled, _a)) }, h("div", { class: "radio-icon" }, h("div", { class: "radio-inner" })), h("button", { type: "button", onFocus: this.onFocus, onBlur: this.onBlur, disabled: disabled })));
+                };
+                Object.defineProperty(Radio.prototype, "el", {
+                    get: function () { return getElement(this); },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(Radio, "watchers", {
+                    get: function () {
+                        return {
+                            "color": ["colorChanged"],
+                            "checked": ["checkedChanged"],
+                            "disabled": ["disabledChanged"]
+                        };
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(Radio, "style", {
+                    get: function () { return "STYLE_TEXT_PLACEHOLDER:ion-radio"; },
+                    enumerable: true,
+                    configurable: true
+                });
+                return Radio;
+            }());
+            exports('ion_radio', Radio);
+            var radioButtonIds = 0;
+        }
+    };
+});

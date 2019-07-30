@@ -1,0 +1,6 @@
+.lower {
+  padding-top: 10px;
+}
+#quote-button {
+    margin-top: 20px;
+}

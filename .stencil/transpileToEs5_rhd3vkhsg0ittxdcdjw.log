@@ -1,0 +1,110 @@
+System.register(['./chunk-5603b3cb.system.js'], function (exports) {
+    'use strict';
+    var registerInstance, createEvent, h, getElement;
+    return {
+        setters: [function (module) {
+                registerInstance = module.r;
+                createEvent = module.d;
+                h = module.h;
+                getElement = module.c;
+            }],
+        execute: function () {
+            var ProRadio = /** @class */ (function () {
+                function ProRadio(hostRef) {
+                    var _this = this;
+                    registerInstance(this, hostRef);
+                    this.name = 'default-radio-name';
+                    this.disabled = false;
+                    this.checked = false;
+                    this.onClick = function () {
+                        if (_this.checked) {
+                            _this.proDeselect.emit();
+                        }
+                        else {
+                            _this.checked = true;
+                        }
+                    };
+                    this.proRadioDidLoad = createEvent(this, "proRadioDidLoad", 7);
+                    this.proRadioDidUnload = createEvent(this, "proRadioDidUnload", 7);
+                    this.proSelect = createEvent(this, "proSelect", 7);
+                    this.proDeselect = createEvent(this, "proDeselect", 7);
+                    this.proStyle = createEvent(this, "proStyle", 7);
+                }
+                ProRadio.prototype.nameChanged = function () {
+                    this.emitStyle();
+                };
+                ProRadio.prototype.checkedChanged = function (isChecked) {
+                    if (isChecked) {
+                        this.proSelect.emit({
+                            checked: true,
+                            value: this.value
+                        });
+                    }
+                    this.emitStyle();
+                };
+                ProRadio.prototype.disabledChanged = function () {
+                    this.emitStyle();
+                };
+                ProRadio.prototype.componentWillLoad = function () {
+                    this.emitStyle();
+                };
+                ProRadio.prototype.componentDidLoad = function () {
+                    this.proRadioDidLoad.emit();
+                };
+                ProRadio.prototype.componentDidUnload = function () {
+                    this.proRadioDidUnload.emit();
+                };
+                ProRadio.prototype.emitStyle = function () {
+                    this.proStyle.emit({
+                        'radio-checked': this.checked,
+                        'interactive-disabled': this.disabled,
+                        'radio-value': this.value
+                    });
+                };
+                /* <Host
+                                onClick={this.onClick}
+                                role="radio"
+                                class={{
+                                    'radio-checked': this.checked,
+                                    'radio-disabled': this.disabled
+                                }}
+                            >
+                                <div class="radio-icon">
+                                    <div class="radio-inner" />
+                                </div>
+                                <button
+                                    type="button"
+                                    disabled={this.disabled}
+                                >
+                                </button>
+                            </Host> */
+                ProRadio.prototype.render = function () {
+                    return (h("input", { type: "radio", onClick: this.onClick, name: this.name, value: this.value, checked: this.checked }));
+                };
+                Object.defineProperty(ProRadio.prototype, "el", {
+                    get: function () { return getElement(this); },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(ProRadio, "watchers", {
+                    get: function () {
+                        return {
+                            "name": ["nameChanged"],
+                            "checked": ["checkedChanged"],
+                            "disabled": ["disabledChanged"]
+                        };
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(ProRadio, "style", {
+                    get: function () { return "STYLE_TEXT_PLACEHOLDER:pro-radio"; },
+                    enumerable: true,
+                    configurable: true
+                });
+                return ProRadio;
+            }());
+            exports('pro_radio', ProRadio);
+        }
+    };
+});

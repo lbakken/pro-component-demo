@@ -1,0 +1,27 @@
+System.register(['./chunk-5603b3cb.system.js'], function (exports) {
+    'use strict';
+    var registerInstance, h;
+    return {
+        setters: [function (module) {
+                registerInstance = module.r;
+                h = module.h;
+            }],
+        execute: function () {
+            var ProContent = /** @class */ (function () {
+                function ProContent(hostRef) {
+                    registerInstance(this, hostRef);
+                }
+                ProContent.prototype.render = function () {
+                    return (h("slot", null));
+                };
+                Object.defineProperty(ProContent, "style", {
+                    get: function () { return "STYLE_TEXT_PLACEHOLDER:pro-content"; },
+                    enumerable: true,
+                    configurable: true
+                });
+                return ProContent;
+            }());
+            exports('pro_content', ProContent);
+        }
+    };
+});

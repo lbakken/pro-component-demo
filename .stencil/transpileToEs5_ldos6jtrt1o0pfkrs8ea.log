@@ -1,0 +1,48 @@
+System.register(['./chunk-5603b3cb.system.js'], function (exports) {
+    'use strict';
+    var registerInstance, h, getElement;
+    return {
+        setters: [function (module) {
+                registerInstance = module.r;
+                h = module.h;
+                getElement = module.c;
+            }],
+        execute: function () {
+            var ProButton = /** @class */ (function () {
+                function ProButton(hostRef) {
+                    var _this = this;
+                    registerInstance(this, hostRef);
+                    this.type = 'button';
+                    this.disabled = false;
+                    this.handleClick = function (ev) {
+                        var form = _this.el.closest('form');
+                        if (form) {
+                            ev.preventDefault();
+                            var fakeButton = document.createElement('button');
+                            fakeButton.type = _this.type;
+                            fakeButton.style.display = 'none';
+                            form.appendChild(fakeButton);
+                            fakeButton.click();
+                            fakeButton.remove();
+                        }
+                    };
+                }
+                ProButton.prototype.render = function () {
+                    return (h("button", { class: "button-native", disabled: this.disabled, type: this.type, onClick: this.handleClick }, h("span", { class: "button-inner" }, h("slot", { name: "icon-only" }), h("slot", { name: "start" }), h("slot", null), h("slot", { name: "end" }))));
+                };
+                Object.defineProperty(ProButton.prototype, "el", {
+                    get: function () { return getElement(this); },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(ProButton, "style", {
+                    get: function () { return "STYLE_TEXT_PLACEHOLDER:pro-button"; },
+                    enumerable: true,
+                    configurable: true
+                });
+                return ProButton;
+            }());
+            exports('pro_button', ProButton);
+        }
+    };
+});

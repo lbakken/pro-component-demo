@@ -1,0 +1,53 @@
+System.register(['./chunk-5603b3cb.system.js', './chunk-125cd98f.system.js'], function (exports) {
+    'use strict';
+    var registerInstance, getIonMode, h, Host, safeCall;
+    return {
+        setters: [function (module) {
+                registerInstance = module.r;
+                getIonMode = module.f;
+                h = module.h;
+                Host = module.H;
+            }, function (module) {
+                safeCall = module.s;
+            }],
+        execute: function () {
+            /**
+             * @internal
+             */
+            var SelectPopover = /** @class */ (function () {
+                function SelectPopover(hostRef) {
+                    registerInstance(this, hostRef);
+                    /** Array of options for the popover */
+                    this.options = [];
+                }
+                SelectPopover.prototype.onSelect = function (ev) {
+                    var option = this.options.find(function (o) { return o.value === ev.target.value; });
+                    if (option) {
+                        safeCall(option.handler);
+                    }
+                };
+                SelectPopover.prototype.hostData = function () {
+                    var _a;
+                    var mode = getIonMode(this);
+                    return {
+                        class: (_a = {},
+                            _a[mode] = true,
+                            _a)
+                    };
+                };
+                SelectPopover.prototype.__stencil_render = function () {
+                    return (h("ion-list", null, this.header !== undefined && h("ion-list-header", null, this.header), (this.subHeader !== undefined || this.message !== undefined) &&
+                        h("ion-item", null, h("ion-label", { "text-wrap": true }, this.subHeader !== undefined && h("h3", null, this.subHeader), this.message !== undefined && h("p", null, this.message))), h("ion-radio-group", null, this.options.map(function (option) { return h("ion-item", null, h("ion-label", null, option.text), h("ion-radio", { checked: option.checked, value: option.value, disabled: option.disabled })); }))));
+                };
+                SelectPopover.prototype.render = function () { return h(Host, this.hostData(), this.__stencil_render()); };
+                Object.defineProperty(SelectPopover, "style", {
+                    get: function () { return "STYLE_TEXT_PLACEHOLDER:ion-select-popover"; },
+                    enumerable: true,
+                    configurable: true
+                });
+                return SelectPopover;
+            }());
+            exports('ion_select_popover', SelectPopover);
+        }
+    };
+});

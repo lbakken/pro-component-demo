@@ -1,0 +1,21 @@
+import { createEvent as __stencil_createEvent } from "@stencil/core";
+import { getConnect as __stencil_getConnect } from "@stencil/core";
+import { getContext as __stencil_getContext } from "@stencil/core";
+import { getElement as __stencil_getElement } from "@stencil/core";
+import { Host as __stencil_Host } from "@stencil/core";
+import { h as __stencil_h } from "@stencil/core";
+import { registerInstance as __stencil_registerInstance } from "@stencil/core";
+import { h } from '@stencil/core';
+export class DefaultLinks {
+    constructor(hostRef) {
+        __stencil_registerInstance(this, hostRef);
+        this.changeWeather = __stencil_createEvent(this, "changeWeather", 7);
+    }
+    onChangeWeather(weather) {
+        this.changeWeather.emit({ weather: weather });
+    }
+    render() {
+        return (h("pro-card", null, h("pro-grid", null, h("pro-row", null, h("pro-col", null, h("h3", null, "Thank you for using our app!"))), h("pro-row", null, h("pro-col", null, h("p", null, "Want to see more?"), h("p", null, "Click on one of the links below to see what this page looks like during different weather events!"))), h("pro-row", null, h("pro-col", { size: "12" }, h("pro-button", { onClick: () => this.onChangeWeather('none') }, "Sunny Example"))), h("pro-row", null, h("pro-col", { size: "6" }, h("pro-button", { onClick: () => this.onChangeWeather('wind') }, "Windy Example")), h("pro-col", { size: "6" }, h("pro-button", { onClick: () => this.onChangeWeather('thunderstorms') }, "Rain Example"))), h("pro-row", null, h("pro-col", { size: "6" }, h("pro-button", { onClick: () => this.onChangeWeather('hail') }, "Hail Example")), h("pro-col", { size: "6" }, h("pro-button", { onClick: () => this.onChangeWeather('snow') }, "Snow Example"))))));
+    }
+    static get style() { return "STYLE_TEXT_PLACEHOLDER:default-links"; }
+}

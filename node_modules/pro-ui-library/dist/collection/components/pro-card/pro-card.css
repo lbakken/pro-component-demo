@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
+.good-weather {
+  background: #fcd581;
+  background-image: linear-gradient(0deg, #fcd581 0%, #fdfffc 65%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100%;
+  color: #0a0908;
+}
+
+.bad-weather {
+  background: #0a0908;
+  background: linear-gradient(0deg, #0a0908 0%, #263a3c 65%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100%;
+  color: #fdfffc;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+h2 {
+  font-size: 28px;
+}
+
+h3 {
+  font-size: 26px;
+}
+
+h4 {
+  font-size: 24px;
+}
+
+h5 {
+  font-size: 22px;
+}
+
+h6 {
+  font-size: 18px;
+}
+
+p {
+  font-size: 16px;
+}
+
+.good-weather {
+  background: #fcd581;
+  background-image: linear-gradient(0deg, #fcd581 0%, #fdfffc 65%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100%;
+  color: #0a0908;
+}
+
+.bad-weather {
+  background: #0a0908;
+  background: linear-gradient(0deg, #0a0908 0%, #263a3c 65%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  height: 100%;
+  color: #fdfffc;
+}
+
+html {
+  font-family: "Raleway", "Helvetica", sans-serif;
+  font-size: 100%;
+  background-color: #fdfffc;
+  color: #0a0908;
+  height: 100%;
+  width: 100%;
+}
+
+#body {
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+:host {
+  width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+  pro-modal {
+    width: 50%;
+    height: 50%;
+  }
+}
+pro-card {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 1px 3px #b7b7b7;
+  transition: 0.3s;
+  border-color: #0a0908;
+  border-width: 1px;
+  font-size: 16px;
+  padding: 5px;
+  margin: 5px;
+  background-color: #fdfffc;
+  min-height: 200px;
+  max-height: 500px;
+}

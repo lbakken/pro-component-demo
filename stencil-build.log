@@ -1,0 +1,66 @@
+15:20:15.07  0064.2MB  D  dev server www root: /Users/admin/repos/pro-component-demo/www, base path: /, [2m MEM: 63.8MB[22m
+15:20:15.07  0064.3MB  I  [36m@stencil/core v1.1.9 🐕[39m
+15:20:15.07  0064.3MB  D  darwin, Intel(R) Core(TM) i7-4980HQ CPU @ 2.80GHz, [2m MEM: 64.3MB[22m
+15:20:15.07  0064.4MB  D  cpus: 8, freemem: 8019MB, totalmem: 17180MB, [2m MEM: 64.3MB[22m
+15:20:15.07  0064.4MB  D  node v12.4.0, [2m MEM: 64.4MB[22m
+15:20:15.07  0064.4MB  D  compiler runtime: /Users/admin/repos/pro-component-demo/node_modules/@stencil/core/dist/compiler/index.js, [2m MEM: 64.4MB[22m
+15:20:15.07  0064.4MB  D  compiler build: 20190722222612, [2m MEM: 64.4MB[22m
+15:20:15.07  0064.4MB  D  minifyJs: false, minifyCss: false, buildEs5: false, [2m MEM: 64.4MB[22m
+15:20:15.07  0063.9MB  D  compiler workers: 8, tasks per worker: 2, [2m MEM: 63.9MB[22m
+15:20:15.07  0064.0MB  D  cache enabled, cacheDir: /Users/admin/repos/pro-component-demo/.stencil, [2m MEM: 64.0MB[22m
+15:20:16.03  0064.4MB  D  dev server started: http://localhost:3333/, [2m MEM: 64.4MB[22m
+15:20:16.03  0064.4MB  I  build, app, dev mode, started ...
+15:20:16.03  0064.4MB  D  [36m[0][39m start build, 2019-07-30T21:20:16, [2m MEM: 64.4MB[22m
+15:20:16.03  0064.5MB  D  [36m[0][39m cleaning 1 dirs ...
+15:20:16.03  0064.5MB  D  [36m[0][39m empty dir: /Users/admin/repos/pro-component-demo/www, [2m MEM: 64.5MB[22m
+15:20:16.03  0067.7MB  D  [36m[0][39m cleaning dirs finished in 58 ms
+15:20:16.03  0067.7MB  D  [36m[0][39m scan /Users/admin/repos/pro-component-demo/src started ...
+15:20:16.03  0067.7MB  D  [36m[0][39m scan for ts files finished: 18 in 9 ms
+15:20:16.03  0067.8MB  I  transpile started ...
+15:20:17.08  0144.6MB  D  load collection: @ionic/core, node_modules/@ionic/core/dist/collection/collection-manifest.json, [2m MEM: 144.6MB[22m
+15:20:19.04  0472.6MB  D  load collection: ionicons, node_modules/ionicons/dist/collection/collection-manifest.json, [2m MEM: 472.4MB[22m
+15:20:19.04  0480.6MB  D  load collection: pro-ui-library, node_modules/pro-ui-library/dist/collection/collection-manifest.json, [2m MEM: 480.4MB[22m
+15:20:19.06  0555.1MB  I  transpile finished in 3.22 s
+15:20:19.06  0558.4MB  D  [36m[0][39m generated app types started ...
+15:20:19.06  0560.9MB  I  [2m[36mGET[39m /~dev-server-init[22m
+15:20:19.06  0561.0MB  I  [2m[36mGET[39m /~dev-server[22m
+15:20:19.06  0561.9MB  D  [36m[0][39m generated app types finished: src/components.d.ts in 7 ms
+15:20:19.06  0562.1MB  I  type checking started ...
+15:20:19.06  0567.2MB  D  [36m[0][39m getComponentAssetsCopyTasks: 2, [2m MEM: 567.2MB[22m
+15:20:19.06  0567.4MB  I  copy started ...
+15:20:19.06  0567.7MB  D  [36m[0][39m generateEntryModules, 130 entryModules, [2m MEM: 567.7MB[22m
+15:20:19.06  0567.8MB  I  generate styles started ...
+15:20:19.06  0569.9MB  I  bundling components started ...
+15:20:21.04  0265.0MB  D  did not resolve external css @import: @import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");, [2m MEM: 265.0MB[22m
+15:20:21.04  0265.0MB  D  cache had 148 failed ops, skip disk ops for remander of build, [2m MEM: 265.0MB[22m
+15:20:21.04  0265.0MB  D  did not resolve external css @import: @import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");, [2m MEM: 265.0MB[22m
+15:20:21.04  0265.0MB  D  did not resolve external css @import: @import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");, [2m MEM: 265.0MB[22m
+15:20:21.05  0265.0MB  D  did not resolve external css @import: @import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");, [2m MEM: 265.0MB[22m
+15:20:21.05  0265.0MB  D  did not resolve external css @import: @import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");, [2m MEM: 265.0MB[22m
+15:20:21.05  0265.0MB  D  did not resolve external css @import: @import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");, [2m MEM: 265.0MB[22m
+15:20:21.05  0265.0MB  D  did not resolve external css @import: @import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");, [2m MEM: 265.0MB[22m
+15:20:21.05  0265.0MB  D  did not resolve external css @import: @import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");, [2m MEM: 265.0MB[22m
+15:20:21.05  0265.0MB  D  did not resolve external css @import: @import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");, [2m MEM: 265.0MB[22m
+15:20:21.05  0265.0MB  D  did not resolve external css @import: @import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");, [2m MEM: 265.0MB[22m
+15:20:21.05  0265.0MB  D  did not resolve external css @import: @import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");, [2m MEM: 265.0MB[22m
+15:20:21.05  0265.0MB  D  did not resolve external css @import: @import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");, [2m MEM: 265.0MB[22m
+15:20:21.07  0266.5MB  I  copy finished (712 files) in 2.12 s
+15:20:22.07  0272.3MB  I  type checking finished in 3.14 s
+15:20:22.08  0269.4MB  I  generate styles finished in 3.21 s
+15:20:23.06  0315.3MB  D  Upfront metadata is 25854 bytes, [2m MEM: 315.3MB[22m
+15:20:26.02  0320.1MB  D  Upfront metadata is 27142 bytes, [2m MEM: 320.1MB[22m
+15:20:26.02  0320.1MB  I  bundling components finished in 6.60 s
+15:20:26.02  0320.2MB  D  [36m[0][39m generate www started ...
+15:20:26.02  0320.2MB  D  [36m[0][39m generateIndexHtml, write: www/index.html, [2m MEM: 320.2MB[22m
+15:20:26.02  0320.2MB  D  [36m[0][39m generate www finished in 3 ms
+15:20:26.02  0320.2MB  D  [36m[0][39m writeBuildFiles started ...
+15:20:26.03  0331.9MB  D  clearExpiredCache, set last clear, [2m MEM: 331.9MB[22m
+15:20:26.03  0331.9MB  D  [36m[0][39m in-memory-fs: data length: 2397, [2m MEM: 331.9MB[22m
+15:20:26.03  0331.9MB  D  [36m[0][39m cache: data length: 473, [2m MEM: 331.9MB[22m
+15:20:26.03  0332.0MB  D  [36m[0][39m writeBuildFiles finished, files wrote: 420 in 89 ms
+15:20:26.03  0332.0MB  D  [36m[0][39m finished build, 2019-07-30T21:20:16, [2m MEM: 332.0MB[22m
+15:20:26.03  0332.0MB  D  [36m[0][39m generateBuildResults started ...
+15:20:26.03  0332.0MB  D  [36m[0][39m generateBuildResults finished in 1 ms
+15:20:26.03  0332.0MB  I  dev server: [36mhttp://localhost:3333/[39m
+15:20:26.03  0332.0MB  I  build finished, watching for changes... in 10.02 s
+15:20:26.03  0332.1MB  F  --------------------------------------

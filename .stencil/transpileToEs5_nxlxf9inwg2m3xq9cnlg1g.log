@@ -1,0 +1,91 @@
+System.register(['./chunk-5603b3cb.system.js', './chunk-17730780.system.js'], function (exports) {
+    'use strict';
+    var registerInstance, getIonMode, h, Host, getElement, createColorClasses;
+    return {
+        setters: [function (module) {
+                registerInstance = module.r;
+                getIonMode = module.f;
+                h = module.h;
+                Host = module.H;
+                getElement = module.c;
+            }, function (module) {
+                createColorClasses = module.c;
+            }],
+        execute: function () {
+            /**
+             * @virtualProp {"ios" | "md"} mode - The mode determines which platform styles to use.
+             *
+             * @slot - Content is placed between the named slots if provided without a slot.
+             * @slot start - Content is placed to the left of the toolbar text in LTR, and to the right in RTL.
+             * @slot secondary - Content is placed to the left of the toolbar text in `ios` mode, and directly to the right in `md` mode.
+             * @slot primary - Content is placed to the right of the toolbar text in `ios` mode, and to the far right in `md` mode.
+             * @slot end - Content is placed to the right of the toolbar text in LTR, and to the left in RTL.
+             */
+            var Toolbar = /** @class */ (function () {
+                function Toolbar(hostRef) {
+                    registerInstance(this, hostRef);
+                    this.childrenStyles = new Map();
+                }
+                Toolbar.prototype.componentWillLoad = function () {
+                    var buttons = Array.from(this.el.querySelectorAll('ion-buttons'));
+                    var firstButtons = buttons.find(function (button) {
+                        return button.slot === 'start';
+                    });
+                    if (firstButtons) {
+                        firstButtons.classList.add('buttons-first-slot');
+                    }
+                    var buttonsReversed = buttons.reverse();
+                    var lastButtons = buttonsReversed.find(function (button) { return button.slot === 'end'; }) ||
+                        buttonsReversed.find(function (button) { return button.slot === 'primary'; }) ||
+                        buttonsReversed.find(function (button) { return button.slot === 'secondary'; });
+                    if (lastButtons) {
+                        lastButtons.classList.add('buttons-last-slot');
+                    }
+                };
+                Toolbar.prototype.childrenStyle = function (ev) {
+                    ev.stopPropagation();
+                    var tagName = ev.target.tagName;
+                    var updatedStyles = ev.detail;
+                    var newStyles = {};
+                    var childStyles = this.childrenStyles.get(tagName) || {};
+                    var hasStyleChange = false;
+                    Object.keys(updatedStyles).forEach(function (key) {
+                        var childKey = "toolbar-" + key;
+                        var newValue = updatedStyles[key];
+                        if (newValue !== childStyles[childKey]) {
+                            hasStyleChange = true;
+                        }
+                        if (newValue) {
+                            newStyles[childKey] = true;
+                        }
+                    });
+                    if (hasStyleChange) {
+                        this.childrenStyles.set(tagName, newStyles);
+                        this.el.forceUpdate();
+                    }
+                };
+                Toolbar.prototype.render = function () {
+                    var _a;
+                    var mode = getIonMode(this);
+                    var childStyles = {};
+                    this.childrenStyles.forEach(function (value) {
+                        Object.assign(childStyles, value);
+                    });
+                    return (h(Host, { class: Object.assign((_a = {}, _a[mode] = true, _a), childStyles, createColorClasses(this.color)) }, h("div", { class: "toolbar-background" }), h("div", { class: "toolbar-container" }, h("slot", { name: "start" }), h("slot", { name: "secondary" }), h("div", { class: "toolbar-content" }, h("slot", null)), h("slot", { name: "primary" }), h("slot", { name: "end" }))));
+                };
+                Object.defineProperty(Toolbar.prototype, "el", {
+                    get: function () { return getElement(this); },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(Toolbar, "style", {
+                    get: function () { return "STYLE_TEXT_PLACEHOLDER:ion-toolbar"; },
+                    enumerable: true,
+                    configurable: true
+                });
+                return Toolbar;
+            }());
+            exports('ion_toolbar', Toolbar);
+        }
+    };
+});

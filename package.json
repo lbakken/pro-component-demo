@@ -1,0 +1,27 @@
+{
+  "name": "stencil-ionic-app",
+  "private": true,
+  "version": "0.0.1",
+  "description": "stencil-ionic-app",
+  "license": "MIT",
+  "files": [
+    "dist/"
+  ],
+  "scripts": {
+    "build": "stencil build",
+    "start": "serve www",
+    "start-dev": "stencil build --dev --watch --debug --log --serve",
+    "test": "stencil test --spec --e2e",
+    "test.watch": "stencil test --spec --e2e --watch"
+  },
+  "dependencies": {
+    "@ionic/core": "^4.6.2",
+    "@stencil/router": "^1.0.1",
+    "pro-ui-library": "^1.0.3",
+    "serve": "^11.1.0"
+  },
+  "devDependencies": {
+    "@stencil/core": "^1.1.9",
+    "workbox-build": "4.3.1"
+  }
+}

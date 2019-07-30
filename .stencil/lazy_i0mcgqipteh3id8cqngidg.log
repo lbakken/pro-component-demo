@@ -1,0 +1,80 @@
+import { createEvent as __stencil_createEvent } from "@stencil/core";
+import { getConnect as __stencil_getConnect } from "@stencil/core";
+import { getContext as __stencil_getContext } from "@stencil/core";
+import { getElement as __stencil_getElement } from "@stencil/core";
+import { Host as __stencil_Host } from "@stencil/core";
+import { h as __stencil_h } from "@stencil/core";
+import { registerInstance as __stencil_registerInstance } from "@stencil/core";
+import { h } from '@stencil/core';
+import { matchBreakpoint } from '../../utils/utils';
+const win = window;
+const SUPPORTS_VARS = !!(win.CSS && win.CSS.supports && win.CSS.supports('--a: 0'));
+const BREAKPOINTS = ['', 'xs', 'sm', 'md', 'lg', 'xl'];
+export class ProCol {
+    constructor(hostRef) {
+        __stencil_registerInstance(this, hostRef);
+        this.win = __stencil_getContext(this, "window");
+    }
+    onResize() {
+        this.el.forceUpdate();
+    }
+    getColumns(property) {
+        let matched;
+        for (const breakpoint of BREAKPOINTS) {
+            const matches = matchBreakpoint(this.win, breakpoint);
+            const columns = this[property + breakpoint.charAt(0).toUpperCase() + breakpoint.slice(1)];
+            if (matches && columns !== undefined) {
+                matched = columns;
+            }
+        }
+        return matched;
+    }
+    calculateSize() {
+        const columns = this.getColumns('size');
+        if (!columns || columns === '') {
+            return;
+        }
+        const colSize = (columns === 'auto')
+            ? 'auto'
+            : SUPPORTS_VARS ? `calc(calc(${columns} / var(--pro-grid-columns, 12)) * 100%)`
+                : ((columns / 12) * 100) + '%';
+        return {
+            'flex': `0 0 ${colSize}`,
+            'width': `${colSize}`,
+            'max-width': `${colSize}`
+        };
+    }
+    calculatePosition(property, modifier) {
+        const columns = this.getColumns(property);
+        if (!columns) {
+            return;
+        }
+        const amount = SUPPORTS_VARS
+            ? `calc(calc(${columns} / var(--pro-grid-columns, 12)) * 100%)`
+            : (columns > 0 && columns < 12) ? (columns / 12 * 100) + '%' : 'auto';
+        return {
+            [modifier]: amount
+        };
+    }
+    calculateOffset(isRTL) {
+        return this.calculatePosition('offset', isRTL ? 'margin-right' : 'margin-left');
+    }
+    calculatePull(isRTL) {
+        return this.calculatePosition('pull', isRTL ? 'left' : 'right');
+    }
+    calculatePush(isRTL) {
+        return this.calculatePosition('push', isRTL ? 'right' : 'left');
+    }
+    hostData() {
+        const isRTL = this.win.document.dir === 'rtl';
+        return {
+            style: Object.assign({}, this.calculateOffset(isRTL), this.calculatePull(isRTL), this.calculatePush(isRTL), this.calculateSize())
+        };
+    }
+    __stencil_render() {
+        return h("slot", null);
+    }
+    get el() { return __stencil_getElement(this); }
+    render() { return __stencil_h(__stencil_Host, this.hostData(), this.__stencil_render()); }
+    static get style() { return "STYLE_TEXT_PLACEHOLDER:pro-col"; }
+}

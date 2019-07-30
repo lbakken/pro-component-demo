@@ -1,0 +1,37 @@
+import { createEvent as __stencil_createEvent } from "@stencil/core";
+import { getConnect as __stencil_getConnect } from "@stencil/core";
+import { getContext as __stencil_getContext } from "@stencil/core";
+import { getElement as __stencil_getElement } from "@stencil/core";
+import { Host as __stencil_Host } from "@stencil/core";
+import { h as __stencil_h } from "@stencil/core";
+import { registerInstance as __stencil_registerInstance } from "@stencil/core";
+import { h } from '@stencil/core';
+import { getIonMode } from '../../global/ionic-global';
+import { createColorClasses } from '../../utils/theme';
+/**
+ * @virtualProp {"ios" | "md"} mode - The mode determines which platform styles to use.
+ */
+export class Chip {
+    constructor(hostRef) {
+        __stencil_registerInstance(this, hostRef);
+        /**
+         * Display an outline style button.
+         */
+        this.outline = false;
+    }
+    hostData() {
+        const mode = getIonMode(this);
+        return {
+            class: Object.assign({}, createColorClasses(this.color), { [mode]: true, 'chip-outline': this.outline, 'ion-activatable': true })
+        };
+    }
+    __stencil_render() {
+        const mode = getIonMode(this);
+        return [
+            h("slot", null),
+            mode === 'md' ? h("ion-ripple-effect", null) : null
+        ];
+    }
+    render() { return __stencil_h(__stencil_Host, this.hostData(), this.__stencil_render()); }
+    static get style() { return "STYLE_TEXT_PLACEHOLDER:ion-chip"; }
+}

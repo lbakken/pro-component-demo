@@ -1,0 +1,64 @@
+import { createEvent as __stencil_createEvent } from "@stencil/core";
+import { getConnect as __stencil_getConnect } from "@stencil/core";
+import { getContext as __stencil_getContext } from "@stencil/core";
+import { getElement as __stencil_getElement } from "@stencil/core";
+import { Host as __stencil_Host } from "@stencil/core";
+import { h as __stencil_h } from "@stencil/core";
+import { registerInstance as __stencil_registerInstance } from "@stencil/core";
+import { h } from '@stencil/core';
+import { config } from '../../global/config';
+import { getIonMode } from '../../global/ionic-global';
+import { createColorClasses } from '../../utils/theme';
+import { SPINNERS } from './spinner-configs';
+export class Spinner {
+    constructor(hostRef) {
+        __stencil_registerInstance(this, hostRef);
+        /**
+         * If `true`, the spinner's animation will be paused.
+         */
+        this.paused = false;
+    }
+    getName() {
+        const name = this.name || config.get('spinner');
+        const mode = getIonMode(this);
+        if (name) {
+            return name;
+        }
+        return (mode === 'ios') ? 'lines' : 'crescent';
+    }
+    hostData() {
+        const mode = getIonMode(this);
+        return {
+            class: Object.assign({}, createColorClasses(this.color), { [mode]: true, [`spinner-${this.getName()}`]: true, 'spinner-paused': !!this.paused || config.getBoolean('_testing') })
+        };
+    }
+    __stencil_render() {
+        const name = this.getName();
+        const spinner = SPINNERS[name] || SPINNERS['lines'];
+        const duration = (typeof this.duration === 'number' && this.duration > 10 ? this.duration : spinner.dur);
+        const svgs = [];
+        if (spinner.circles !== undefined) {
+            for (let i = 0; i < spinner.circles; i++) {
+                svgs.push(buildCircle(spinner, duration, i, spinner.circles));
+            }
+        }
+        else if (spinner.lines !== undefined) {
+            for (let i = 0; i < spinner.lines; i++) {
+                svgs.push(buildLine(spinner, duration, i, spinner.lines));
+            }
+        }
+        return svgs;
+    }
+    render() { return __stencil_h(__stencil_Host, this.hostData(), this.__stencil_render()); }
+    static get style() { return "STYLE_TEXT_PLACEHOLDER:ion-spinner"; }
+}
+const buildCircle = (spinner, duration, index, total) => {
+    const data = spinner.fn(duration, index, total);
+    data.style['animation-duration'] = `${duration}ms`;
+    return (h("svg", { viewBox: "0 0 64 64", style: data.style }, h("circle", { transform: "translate(32,32)", r: data.r })));
+};
+const buildLine = (spinner, duration, index, total) => {
+    const data = spinner.fn(duration, index, total);
+    data.style['animation-duration'] = `${duration}ms`;
+    return (h("svg", { viewBox: "0 0 64 64", style: data.style }, h("line", { transform: "translate(32,32)", y1: data.y1, y2: data.y2 })));
+};

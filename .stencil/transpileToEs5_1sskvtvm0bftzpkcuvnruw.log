@@ -1,0 +1,63 @@
+System.register(['./chunk-5603b3cb.system.js', './chunk-17730780.system.js'], function (exports) {
+    'use strict';
+    var registerInstance, getIonMode, h, getElement, Host, createColorClasses;
+    return {
+        setters: [function (module) {
+                registerInstance = module.r;
+                getIonMode = module.f;
+                h = module.h;
+                getElement = module.c;
+                Host = module.H;
+            }, function (module) {
+                createColorClasses = module.c;
+            }],
+        execute: function () {
+            /**
+             * @virtualProp {"ios" | "md"} mode - The mode determines which platform styles to use.
+             *
+             * @slot - Content is placed between the named slots if provided without a slot.
+             * @slot start - Content is placed to the left of the divider text in LTR, and to the right in RTL.
+             * @slot end - Content is placed to the right of the divider text in LTR, and to the left in RTL.
+             */
+            var ItemDivider = /** @class */ (function () {
+                function ItemDivider(hostRef) {
+                    registerInstance(this, hostRef);
+                    /**
+                     * When it's set to `true`, the item-divider will stay visible when it reaches the top
+                     * of the viewport until the next `ion-item-divider` replaces it.
+                     *
+                     * This feature relies in `position:sticky`:
+                     * https://caniuse.com/#feat=css-sticky
+                     */
+                    this.sticky = false;
+                }
+                ItemDivider.prototype.hostData = function () {
+                    var _a;
+                    var mode = getIonMode(this);
+                    return {
+                        class: Object.assign({}, createColorClasses(this.color), (_a = {}, _a[mode] = true, _a['item-divider-sticky'] = this.sticky, _a['item'] = true, _a))
+                    };
+                };
+                ItemDivider.prototype.__stencil_render = function () {
+                    return [
+                        h("slot", { name: "start" }),
+                        h("div", { class: "item-divider-inner" }, h("div", { class: "item-divider-wrapper" }, h("slot", null)), h("slot", { name: "end" }))
+                    ];
+                };
+                Object.defineProperty(ItemDivider.prototype, "el", {
+                    get: function () { return getElement(this); },
+                    enumerable: true,
+                    configurable: true
+                });
+                ItemDivider.prototype.render = function () { return h(Host, this.hostData(), this.__stencil_render()); };
+                Object.defineProperty(ItemDivider, "style", {
+                    get: function () { return "STYLE_TEXT_PLACEHOLDER:ion-item-divider"; },
+                    enumerable: true,
+                    configurable: true
+                });
+                return ItemDivider;
+            }());
+            exports('ion_item_divider', ItemDivider);
+        }
+    };
+});

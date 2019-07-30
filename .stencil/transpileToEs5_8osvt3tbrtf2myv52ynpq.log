@@ -1,0 +1,27 @@
+System.register(['./chunk-5603b3cb.system.js'], function (exports) {
+    'use strict';
+    var registerInstance, h;
+    return {
+        setters: [function (module) {
+                registerInstance = module.r;
+                h = module.h;
+            }],
+        execute: function () {
+            var ProFooter = /** @class */ (function () {
+                function ProFooter(hostRef) {
+                    registerInstance(this, hostRef);
+                }
+                ProFooter.prototype.render = function () {
+                    return h("slot", null);
+                };
+                Object.defineProperty(ProFooter, "style", {
+                    get: function () { return "STYLE_TEXT_PLACEHOLDER:pro-footer"; },
+                    enumerable: true,
+                    configurable: true
+                });
+                return ProFooter;
+            }());
+            exports('pro_footer', ProFooter);
+        }
+    };
+});

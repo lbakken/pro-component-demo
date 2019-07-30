@@ -1,0 +1,13 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
+
+:host {
+  font-family: 'Raleway', Helvetica, sans-serif;
+  --bad-weather-bg: linear-gradient(0deg, rgba(77,101,110,1) 4%, rgba(210,220,221,1) 39%, rgba(252,255,252,1) 58%);
+  --good-weather-bg: linear-gradient(0deg, rgba(252, 213, 129, 1) 0%, rgba(253, 255, 252, 1) 65%);
+}
+
+ion-app {
+    background-color: linear-gradient(0deg, rgba(252, 213, 129, 1) 0%, rgba(253, 255, 252, 1) 65%);
+    background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(252, 213, 129, 1)), color-stop(65%, rgba(253, 255, 252, 1)));
+    background-image: linear-gradient(0deg, rgba(252, 213, 129, 1) 0%, rgba(253, 255, 252, 1) 65%);
+}

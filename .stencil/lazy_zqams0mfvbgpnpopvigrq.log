@@ -1,0 +1,42 @@
+import { createEvent as __stencil_createEvent } from "@stencil/core";
+import { getConnect as __stencil_getConnect } from "@stencil/core";
+import { getContext as __stencil_getContext } from "@stencil/core";
+import { getElement as __stencil_getElement } from "@stencil/core";
+import { Host as __stencil_Host } from "@stencil/core";
+import { h as __stencil_h } from "@stencil/core";
+import { registerInstance as __stencil_registerInstance } from "@stencil/core";
+import { now } from '../../utils/utils';
+export class ProBackdrop {
+    constructor(hostRef) {
+        __stencil_registerInstance(this, hostRef);
+        this.lastClick = -10000;
+        this.visible = true;
+        this.tappable = true;
+        this.ionBackdropTap = __stencil_createEvent(this, "ionBackdropTap", 7);
+    }
+    onTouchStart(ev) {
+        this.lastClick = now(ev);
+        this.emitTap();
+    }
+    onMouseDown(ev) {
+        if (this.lastClick < now(ev) - 2500) {
+            this.emitTap();
+        }
+    }
+    emitTap() {
+        if (this.tappable) {
+            this.ionBackdropTap.emit();
+        }
+    }
+    hostData() {
+        return {
+            tabindex: '-1',
+            class: {
+                'backdrop-hide': !this.visible,
+                'backdrop-no-tappable': !this.tappable,
+            }
+        };
+    }
+    render() { return __stencil_h(__stencil_Host, this.hostData()); }
+    static get style() { return "STYLE_TEXT_PLACEHOLDER:pro-backdrop"; }
+}

@@ -1,0 +1,44 @@
+System.register(['./chunk-5603b3cb.system.js'], function (exports) {
+    'use strict';
+    var registerInstance, getIonMode, h, Host;
+    return {
+        setters: [function (module) {
+                registerInstance = module.r;
+                getIonMode = module.f;
+                h = module.h;
+                Host = module.H;
+            }],
+        execute: function () {
+            var Grid = /** @class */ (function () {
+                function Grid(hostRef) {
+                    registerInstance(this, hostRef);
+                    /**
+                     * If `true`, the grid will have a fixed width based on the screen size.
+                     */
+                    this.fixed = false;
+                }
+                Grid.prototype.hostData = function () {
+                    var _a;
+                    var mode = getIonMode(this);
+                    return {
+                        class: (_a = {},
+                            _a[mode] = true,
+                            _a['grid-fixed'] = this.fixed,
+                            _a)
+                    };
+                };
+                Grid.prototype.__stencil_render = function () {
+                    return h("slot", null);
+                };
+                Grid.prototype.render = function () { return h(Host, this.hostData(), this.__stencil_render()); };
+                Object.defineProperty(Grid, "style", {
+                    get: function () { return "STYLE_TEXT_PLACEHOLDER:ion-grid"; },
+                    enumerable: true,
+                    configurable: true
+                });
+                return Grid;
+            }());
+            exports('ion_grid', Grid);
+        }
+    };
+});

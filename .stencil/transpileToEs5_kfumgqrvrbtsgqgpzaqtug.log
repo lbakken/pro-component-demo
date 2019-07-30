@@ -1,0 +1,139 @@
+System.register(['./chunk-5603b3cb.system.js', './chunk-17730780.system.js', './chunk-05185aad.system.js'], function (exports) {
+    'use strict';
+    var registerInstance, createEvent, getIonMode, h, Host, getElement, createColorClasses, hostContext, findItemLabel, renderHiddenInput;
+    return {
+        setters: [function (module) {
+                registerInstance = module.r;
+                createEvent = module.d;
+                getIonMode = module.f;
+                h = module.h;
+                Host = module.H;
+                getElement = module.c;
+            }, function (module) {
+                createColorClasses = module.c;
+                hostContext = module.h;
+            }, function (module) {
+                findItemLabel = module.f;
+                renderHiddenInput = module.a;
+            }],
+        execute: function () {
+            /**
+             * @virtualProp {"ios" | "md"} mode - The mode determines which platform styles to use.
+             */
+            var Checkbox = /** @class */ (function () {
+                function Checkbox(hostRef) {
+                    var _this = this;
+                    registerInstance(this, hostRef);
+                    this.inputId = "ion-cb-" + checkboxIds++;
+                    /**
+                     * The name of the control, which is submitted with the form data.
+                     */
+                    this.name = this.inputId;
+                    /**
+                     * If `true`, the checkbox is selected.
+                     */
+                    this.checked = false;
+                    /**
+                     * If `true`, the checkbox will visually appear as indeterminate.
+                     */
+                    this.indeterminate = false;
+                    /**
+                     * If `true`, the user cannot interact with the checkbox.
+                     */
+                    this.disabled = false;
+                    /**
+                     * The value of the toggle does not mean if it's checked or not, use the `checked`
+                     * property for that.
+                     *
+                     * The value of a toggle is analogous to the value of a `<input type="checkbox">`,
+                     * it's only used when the toggle participates in a native `<form>`.
+                     */
+                    this.value = 'on';
+                    this.onClick = function () {
+                        _this.setFocus();
+                        _this.checked = !_this.checked;
+                        _this.indeterminate = false;
+                    };
+                    this.onFocus = function () {
+                        _this.ionFocus.emit();
+                    };
+                    this.onBlur = function () {
+                        _this.ionBlur.emit();
+                    };
+                    this.ionChange = createEvent(this, "ionChange", 7);
+                    this.ionFocus = createEvent(this, "ionFocus", 7);
+                    this.ionBlur = createEvent(this, "ionBlur", 7);
+                    this.ionStyle = createEvent(this, "ionStyle", 7);
+                }
+                Checkbox.prototype.componentWillLoad = function () {
+                    this.emitStyle();
+                };
+                Checkbox.prototype.checkedChanged = function (isChecked) {
+                    this.ionChange.emit({
+                        checked: isChecked,
+                        value: this.value
+                    });
+                    this.emitStyle();
+                };
+                Checkbox.prototype.disabledChanged = function () {
+                    this.emitStyle();
+                };
+                Checkbox.prototype.emitStyle = function () {
+                    this.ionStyle.emit({
+                        'checkbox-checked': this.checked,
+                        'interactive-disabled': this.disabled,
+                    });
+                };
+                Checkbox.prototype.setFocus = function () {
+                    if (this.buttonEl) {
+                        this.buttonEl.focus();
+                    }
+                };
+                Checkbox.prototype.render = function () {
+                    var _a;
+                    var _this = this;
+                    var _b = this, inputId = _b.inputId, indeterminate = _b.indeterminate, disabled = _b.disabled, checked = _b.checked, value = _b.value, color = _b.color, el = _b.el;
+                    var labelId = inputId + '-lbl';
+                    var mode = getIonMode(this);
+                    var label = findItemLabel(el);
+                    if (label) {
+                        label.id = labelId;
+                    }
+                    renderHiddenInput(true, el, this.name, (checked ? value : ''), disabled);
+                    var path = indeterminate
+                        ? h("path", { d: "M6 12L18 12" })
+                        : h("path", { d: "M5.9,12.5l3.8,3.8l8.8-8.8" });
+                    if (mode === 'md') {
+                        path = indeterminate
+                            ? h("path", { d: "M2 12H22" })
+                            : h("path", { d: "M1.73,12.91 8.1,19.28 22.79,4.59" });
+                    }
+                    return (h(Host, { onClick: this.onClick, role: "checkbox", "aria-disabled": disabled ? 'true' : null, "aria-checked": "" + checked, "aria-labelledby": labelId, class: Object.assign({}, createColorClasses(color), (_a = {}, _a[mode] = true, _a['in-item'] = hostContext('ion-item', el), _a['checkbox-checked'] = checked, _a['checkbox-disabled'] = disabled, _a['checkbox-indeterminate'] = indeterminate, _a['interactive'] = true, _a)) }, h("svg", { class: "checkbox-icon", viewBox: "0 0 24 24" }, path), h("button", { type: "button", onFocus: this.onFocus, onBlur: this.onBlur, disabled: this.disabled, ref: function (btnEl) { return _this.buttonEl = btnEl; } })));
+                };
+                Object.defineProperty(Checkbox.prototype, "el", {
+                    get: function () { return getElement(this); },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(Checkbox, "watchers", {
+                    get: function () {
+                        return {
+                            "checked": ["checkedChanged"],
+                            "disabled": ["disabledChanged"]
+                        };
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(Checkbox, "style", {
+                    get: function () { return "STYLE_TEXT_PLACEHOLDER:ion-checkbox"; },
+                    enumerable: true,
+                    configurable: true
+                });
+                return Checkbox;
+            }());
+            exports('ion_checkbox', Checkbox);
+            var checkboxIds = 0;
+        }
+    };
+});

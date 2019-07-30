@@ -1,0 +1,14 @@
+img {
+    width: 150px;
+    height: 100px;
+    display: block;
+    margin: auto;
+}
+
+.dark {
+    color: rgba(38, 58, 60, 1);
+}
+
+.sunny {
+    color: rgba(252, 213, 129, 1);
+}

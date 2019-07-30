@@ -1,0 +1,32 @@
+import { createEvent as __stencil_createEvent } from "@stencil/core";
+import { getConnect as __stencil_getConnect } from "@stencil/core";
+import { getContext as __stencil_getContext } from "@stencil/core";
+import { getElement as __stencil_getElement } from "@stencil/core";
+import { Host as __stencil_Host } from "@stencil/core";
+import { h as __stencil_h } from "@stencil/core";
+import { registerInstance as __stencil_registerInstance } from "@stencil/core";
+import { h } from '@stencil/core';
+export class ProButton {
+    constructor(hostRef) {
+        __stencil_registerInstance(this, hostRef);
+        this.type = 'button';
+        this.disabled = false;
+        this.handleClick = (ev) => {
+            const form = this.el.closest('form');
+            if (form) {
+                ev.preventDefault();
+                const fakeButton = document.createElement('button');
+                fakeButton.type = this.type;
+                fakeButton.style.display = 'none';
+                form.appendChild(fakeButton);
+                fakeButton.click();
+                fakeButton.remove();
+            }
+        };
+    }
+    render() {
+        return (h("button", { class: "button-native", disabled: this.disabled, type: this.type, onClick: this.handleClick }, h("span", { class: "button-inner" }, h("slot", { name: "icon-only" }), h("slot", { name: "start" }), h("slot", null), h("slot", { name: "end" }))));
+    }
+    get el() { return __stencil_getElement(this); }
+    static get style() { return "STYLE_TEXT_PLACEHOLDER:pro-button"; }
+}

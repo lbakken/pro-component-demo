@@ -1,0 +1,46 @@
+import { createEvent as __stencil_createEvent } from "@stencil/core";
+import { getConnect as __stencil_getConnect } from "@stencil/core";
+import { getContext as __stencil_getContext } from "@stencil/core";
+import { getElement as __stencil_getElement } from "@stencil/core";
+import { Host as __stencil_Host } from "@stencil/core";
+import { h as __stencil_h } from "@stencil/core";
+import { registerInstance as __stencil_registerInstance } from "@stencil/core";
+import { config } from '../../global/config';
+import { getIonMode } from '../../global/ionic-global';
+import { rIC } from '../../utils/helpers';
+import { isPlatform } from '../../utils/platform';
+export class App {
+    constructor(hostRef) {
+        __stencil_registerInstance(this, hostRef);
+    }
+    componentDidLoad() {
+        rIC(() => {
+            if (!config.getBoolean('_testing')) {
+                import('../../utils/tap-click').then(module => module.startTapClick(config));
+            }
+            if (config.getBoolean('statusTap', isPlatform(window, 'hybrid'))) {
+                import('../../utils/status-tap').then(module => module.startStatusTap());
+            }
+            if (config.getBoolean('inputShims', needInputShims())) {
+                import('../../utils/input-shims/input-shims').then(module => module.startInputShims(config));
+            }
+            import('../../utils/focus-visible').then(module => module.startFocusVisible());
+        });
+    }
+    hostData() {
+        const mode = getIonMode(this);
+        return {
+            class: {
+                [mode]: true,
+                'ion-page': true,
+                'force-statusbar-padding': config.getBoolean('_forceStatusbarPadding')
+            }
+        };
+    }
+    get el() { return __stencil_getElement(this); }
+    render() { return __stencil_h(__stencil_Host, this.hostData()); }
+    static get style() { return "STYLE_TEXT_PLACEHOLDER:ion-app"; }
+}
+const needInputShims = () => {
+    return isPlatform(window, 'ios') && isPlatform(window, 'mobile');
+};

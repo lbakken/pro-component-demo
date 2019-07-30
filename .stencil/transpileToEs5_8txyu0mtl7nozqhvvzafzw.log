@@ -1,0 +1,100 @@
+System.register(['./chunk-5603b3cb.system.js', './chunk-17730780.system.js'], function (exports) {
+    'use strict';
+    var registerInstance, createEvent, getIonMode, getElement, h, Host, createColorClasses;
+    return {
+        setters: [function (module) {
+                registerInstance = module.r;
+                createEvent = module.d;
+                getIonMode = module.f;
+                getElement = module.c;
+                h = module.h;
+                Host = module.H;
+            }, function (module) {
+                createColorClasses = module.c;
+            }],
+        execute: function () {
+            /**
+             * @virtualProp {"ios" | "md"} mode - The mode determines which platform styles to use.
+             */
+            var Segment = /** @class */ (function () {
+                function Segment(hostRef) {
+                    registerInstance(this, hostRef);
+                    /**
+                     * If `true`, the user cannot interact with the segment.
+                     */
+                    this.disabled = false;
+                    /**
+                     * If `true`, the segment buttons will overflow and the user can swipe to see them.
+                     */
+                    this.scrollable = false;
+                    this.ionChange = createEvent(this, "ionChange", 7);
+                    this.ionStyle = createEvent(this, "ionStyle", 7);
+                }
+                Segment.prototype.valueChanged = function (value) {
+                    this.updateButtons();
+                    this.ionChange.emit({ value: value });
+                };
+                Segment.prototype.segmentClick = function (ev) {
+                    var selectedButton = ev.target;
+                    this.value = selectedButton.value;
+                };
+                Segment.prototype.componentWillLoad = function () {
+                    this.emitStyle();
+                };
+                Segment.prototype.componentDidLoad = function () {
+                    if (this.value == null) {
+                        var checked = this.getButtons().find(function (b) { return b.checked; });
+                        if (checked) {
+                            this.value = checked.value;
+                        }
+                    }
+                    this.updateButtons();
+                };
+                Segment.prototype.emitStyle = function () {
+                    this.ionStyle.emit({
+                        'segment': true
+                    });
+                };
+                Segment.prototype.updateButtons = function () {
+                    var value = this.value;
+                    for (var _i = 0, _a = this.getButtons(); _i < _a.length; _i++) {
+                        var button = _a[_i];
+                        button.checked = (button.value === value);
+                    }
+                };
+                Segment.prototype.getButtons = function () {
+                    return Array.from(this.el.querySelectorAll('ion-segment-button'));
+                };
+                Segment.prototype.hostData = function () {
+                    var _a;
+                    var mode = getIonMode(this);
+                    return {
+                        class: Object.assign({}, createColorClasses(this.color), (_a = {}, _a[mode] = true, _a['segment-disabled'] = this.disabled, _a['segment-scrollable'] = this.scrollable, _a))
+                    };
+                };
+                Object.defineProperty(Segment.prototype, "el", {
+                    get: function () { return getElement(this); },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(Segment, "watchers", {
+                    get: function () {
+                        return {
+                            "value": ["valueChanged"]
+                        };
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
+                Segment.prototype.render = function () { return h(Host, this.hostData()); };
+                Object.defineProperty(Segment, "style", {
+                    get: function () { return "STYLE_TEXT_PLACEHOLDER:ion-segment"; },
+                    enumerable: true,
+                    configurable: true
+                });
+                return Segment;
+            }());
+            exports('ion_segment', Segment);
+        }
+    };
+});

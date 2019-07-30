@@ -1,0 +1,41 @@
+System.register(['./chunk-5603b3cb.system.js'], function (exports) {
+    'use strict';
+    var registerInstance, getIonMode, h, Host;
+    return {
+        setters: [function (module) {
+                registerInstance = module.r;
+                getIonMode = module.f;
+                h = module.h;
+                Host = module.H;
+            }],
+        execute: function () {
+            /**
+             * @virtualProp {"ios" | "md"} mode - The mode determines which platform styles to use.
+             */
+            var CardContent = /** @class */ (function () {
+                function CardContent(hostRef) {
+                    registerInstance(this, hostRef);
+                }
+                CardContent.prototype.hostData = function () {
+                    var _a;
+                    var mode = getIonMode(this);
+                    return {
+                        class: (_a = {},
+                            _a[mode] = true,
+                            // Used internally for styling
+                            _a["card-content-" + mode] = true,
+                            _a)
+                    };
+                };
+                CardContent.prototype.render = function () { return h(Host, this.hostData()); };
+                Object.defineProperty(CardContent, "style", {
+                    get: function () { return "STYLE_TEXT_PLACEHOLDER:ion-card-content"; },
+                    enumerable: true,
+                    configurable: true
+                });
+                return CardContent;
+            }());
+            exports('ion_card_content', CardContent);
+        }
+    };
+});

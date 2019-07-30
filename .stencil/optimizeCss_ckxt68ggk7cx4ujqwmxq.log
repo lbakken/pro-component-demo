@@ -1,0 +1,31 @@
+.menu-content {
+  -webkit-transform: translate3d(0,  0,  0);
+  transform: translate3d(0,  0,  0);
+}
+
+.menu-content-open {
+  cursor: pointer;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  pointer-events: none;
+}
+
+.ios .menu-content-reveal {
+  -webkit-box-shadow: -8px 0 42px rgba(0, 0, 0, 0.08);
+  box-shadow: -8px 0 42px rgba(0, 0, 0, 0.08);
+}
+
+[dir=rtl].ios .menu-content-reveal {
+  -webkit-box-shadow: 8px 0 42px rgba(0, 0, 0, 0.08);
+  box-shadow: 8px 0 42px rgba(0, 0, 0, 0.08);
+}
+
+.md .menu-content-reveal {
+  -webkit-box-shadow: 0 2px 22px 0 rgba(0, 0, 0, 0.09), 4px 0 16px 0 rgba(0, 0, 0, 0.18);
+  box-shadow: 0 2px 22px 0 rgba(0, 0, 0, 0.09), 4px 0 16px 0 rgba(0, 0, 0, 0.18);
+}
+
+.md .menu-content-push {
+  -webkit-box-shadow: 0 2px 22px 0 rgba(0, 0, 0, 0.09), 4px 0 16px 0 rgba(0, 0, 0, 0.18);
+  box-shadow: 0 2px 22px 0 rgba(0, 0, 0, 0.09), 4px 0 16px 0 rgba(0, 0, 0, 0.18);
+}

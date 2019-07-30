@@ -1,0 +1,15 @@
+:host {
+  display: block;
+  object-fit: contain;
+}
+:host img {
+  display: block;
+  min-width: 50px;
+  min-height: 50px;
+  max-width: 150px;
+  max-height: 150px;
+  width: 100%;
+  height: 100%;
+  object-fit: inherit;
+  object-position: inherit;
+}

@@ -1,0 +1,13 @@
+h2 {
+  text-align: center;
+}
+
+p.head {
+  font-size: 15px;
+  text-align: center;
+}
+
+p.content {
+  font-size: 12px;
+  text-align: center;
+}
